@@ -4,7 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-AFNetworking.xcscheme</key>
+		<key>Pods-CocoaLibSpotify.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-libspotify.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>17CA2A3B348B431F90AE2C56</key>
+		<key>2D50DA7B91094BEE88A1054F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>89CC50A8BAE349B4B218FB61</key>
+		<key>4F6CD65527AE4DEDA454EBE9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5616DA47216A4945B83ACC98</key>
 		<dict>
 			<key>primary</key>
 			<true/>
