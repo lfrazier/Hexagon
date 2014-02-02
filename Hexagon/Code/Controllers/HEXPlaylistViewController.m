@@ -10,6 +10,8 @@
 
 @interface HEXPlaylistViewController ()
 
+@property (nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation HEXPlaylistViewController
@@ -29,12 +31,16 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-
-- (IBAction)openButtonPressed:(id)sender {
-    UIViewController *vc = [[UIViewController alloc] init];
-    vc.view.backgroundColor = [UIColor redColor];
-    [self.navigationController pushViewController:vc animated:YES];
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
+#pragma mark - UITableViewDelegate
 
 - (void)didReceiveMemoryWarning
 {

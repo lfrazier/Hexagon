@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <TWTSideMenuViewController/TWTSideMenuViewController.h>
+#import <CocoaLibSpotify/CocoaLibSpotify.h>
 
-@interface HEXAppDelegate : UIResponder <UIApplicationDelegate, TWTSideMenuViewControllerDelegate>
+@interface HEXAppDelegate : UIResponder <UIApplicationDelegate, TWTSideMenuViewControllerDelegate, SPSessionDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

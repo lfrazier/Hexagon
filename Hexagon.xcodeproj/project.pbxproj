@@ -91,6 +91,7 @@
 		89AC0401189E08BD00B71F89 /* HEXRoomsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXRoomsViewController.h; sourceTree = "<group>"; };
 		89AC0402189E08BD00B71F89 /* HEXRoomsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXRoomsViewController.m; sourceTree = "<group>"; };
 		89AC0403189E08BD00B71F89 /* HEXRoomsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEXRoomsViewController.xib; sourceTree = "<group>"; };
+		89AC0407189E176B00B71F89 /* appkey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = appkey.c; sourceTree = "<group>"; };
 		9AC44CDA0E8C4C45B82441EE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -204,6 +205,7 @@
 			children = (
 				89AC03D4189DC32E00B71F89 /* HEXAppDelegate.h */,
 				89AC03D5189DC32E00B71F89 /* HEXAppDelegate.m */,
+				89AC0407189E176B00B71F89 /* appkey.c */,
 			);
 			name = Application;
 			path = Code/Application;
