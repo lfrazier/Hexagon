@@ -10,6 +10,8 @@
 
 @interface HEXMenuViewController ()
 
+@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *gestureRecognizer;
+
 @end
 
 @implementation HEXMenuViewController
@@ -29,11 +31,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.gestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(closeSideMenu)];
+    self.gestureRecognizer.edges = UIRectEdgeRight;
+    [self.view addGestureRecognizer:self.gestureRecognizer];
 }
 
 - (IBAction)playlistButtonPressed:(id)sender {
     if (self.sideMenuViewController.mainViewController == self.playlistViewController) {
-        [self.sideMenuViewController closeMenuAnimated:YES completion:nil];
+        [self closeSideMenu];
     } else {
         [self.sideMenuViewController setMainViewController:self.playlistViewController animated:YES closeMenu:YES];
     }
@@ -41,10 +46,14 @@
 
 - (IBAction)profileButtonPressed:(id)sender {
     if (self.sideMenuViewController.mainViewController == self.profileViewController) {
-        [self.sideMenuViewController closeMenuAnimated:YES completion:nil];
+        [self closeSideMenu];
     } else {
         [self.sideMenuViewController setMainViewController:self.profileViewController animated:YES closeMenu:YES];
     }
+}
+
+- (void)closeSideMenu {
+    [self.sideMenuViewController closeMenuAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
