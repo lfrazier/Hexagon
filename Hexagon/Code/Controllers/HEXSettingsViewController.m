@@ -1,18 +1,18 @@
 //
-//  HEXPlaylistViewController.m
+//  HEXSettingsViewController.m
 //  Hexagon
 //
 //  Created by Lauren on 2/1/14.
 //  Copyright (c) 2014 Lauren Frazier. All rights reserved.
 //
 
-#import "HEXPlaylistViewController.h"
+#import "HEXSettingsViewController.h"
 
-@interface HEXPlaylistViewController ()
+@interface HEXSettingsViewController ()
 
 @end
 
-@implementation HEXPlaylistViewController
+@implementation HEXSettingsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,13 +27,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-}
-
-
-- (IBAction)openButtonPressed:(id)sender {
-    UIViewController *vc = [[UIViewController alloc] init];
-    vc.view.backgroundColor = [UIColor redColor];
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

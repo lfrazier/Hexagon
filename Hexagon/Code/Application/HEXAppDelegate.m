@@ -30,7 +30,7 @@
     
     // TWTSideMenuViewController Code
     self.menuViewController = [[HEXMenuViewController alloc] initWithNibName:NSStringFromClass([HEXMenuViewController class]) bundle:nil];
-    self.mainViewController = self.menuViewController.playlistViewController;
+    self.mainViewController = self.menuViewController.playlistNavController;
     // create a new side menu
     self.sideMenuViewController = [[TWTSideMenuViewController alloc] initWithMenuViewController:self.menuViewController mainViewController:self.mainViewController];
     // specify the shadow color to use behind the main view controller when it is scaled down.

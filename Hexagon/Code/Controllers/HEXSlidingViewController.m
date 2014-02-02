@@ -34,6 +34,11 @@
     [self.view addGestureRecognizer:self.gestureRecognizer];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    UIBarButtonItem *openMenuButton = [[UIBarButtonItem alloc] initWithTitle:@"MENU" style:UIBarButtonItemStylePlain target:self action:@selector(openSideMenu)];
+    self.navigationItem.leftBarButtonItem = openMenuButton;
+}
+
 - (void)openSideMenu {
     [self.sideMenuViewController openMenuAnimated:YES completion:nil];
 }

@@ -7,5 +7,9 @@
 */
 
 // Menu Items
-"Playlists" =                                 "Playlists";
-"Profile" =                                   "Profile";
+"Search" =                                  "Search";
+"Rooms" =                                   "Rooms";
+"Playlists" =                               "Playlists";
+"Inbox" =                                   "Inbox";
+"Profile" =                                 "Profile";
+"Settings" =                                "Settings";

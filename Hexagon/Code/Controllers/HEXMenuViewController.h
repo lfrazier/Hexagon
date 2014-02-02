@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HEXPlaylistViewController.h"
-#import "HEXProfileViewController.h"
 
 @interface HEXMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) HEXPlaylistViewController *playlistViewController;
-@property (nonatomic, strong) HEXProfileViewController *profileViewController;
+@property (nonatomic, strong) UINavigationController *searchNavController;
+@property (nonatomic, strong) UINavigationController *roomsNavController;
+@property (nonatomic, strong) UINavigationController *playlistNavController;
+@property (nonatomic, strong) UINavigationController *profileNavController;
+@property (nonatomic, strong) UINavigationController *settingsNavController;
 
 @end

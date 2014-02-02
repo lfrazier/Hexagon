@@ -7,6 +7,11 @@
 //
 
 #import "HEXMenuViewController.h"
+#import "HEXPlaylistViewController.h"
+#import "HEXProfileViewController.h"
+#import "HEXSettingsViewController.h"
+#import "HEXSearchViewController.h"
+#import "HEXRoomsViewController.h"
 
 @interface HEXMenuViewController ()
 
@@ -17,8 +22,11 @@
 
 static NSString *MenuCellIdentifier = @"MenuCellIdentifier";
 
-static const int kPlaylistIndex = 0;
-static const int kProfileIndex = 1;
+static const int kSearchIndex = 0;
+static const int kRoomsIndex = 1;
+static const int kPlaylistIndex = 2;
+static const int kProfileIndex = 3;
+static const int kSettingsIndex = 4;
 
 @implementation HEXMenuViewController
 
@@ -27,8 +35,11 @@ static const int kProfileIndex = 1;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.playlistViewController = [[HEXPlaylistViewController alloc] initWithNibName:NSStringFromClass([HEXPlaylistViewController class]) bundle:nil];
-        self.profileViewController = [[HEXProfileViewController alloc] initWithNibName:NSStringFromClass([HEXProfileViewController class]) bundle:nil];
+        self.searchNavController = [[UINavigationController alloc] initWithRootViewController: [[HEXSearchViewController alloc] initWithNibName:NSStringFromClass([HEXSearchViewController class]) bundle:nil]];
+        self.roomsNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXRoomsViewController alloc] initWithNibName:NSStringFromClass([HEXRoomsViewController class]) bundle:nil]];
+        self.playlistNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXPlaylistViewController alloc] initWithNibName:NSStringFromClass([HEXPlaylistViewController class]) bundle:nil]];
+        self.profileNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXProfileViewController alloc] initWithNibName:NSStringFromClass([HEXProfileViewController class]) bundle:nil]];
+        self.settingsNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXSettingsViewController alloc] initWithNibName:NSStringFromClass([HEXSettingsViewController class]) bundle:nil]];
     }
     return self;
 }
@@ -44,9 +55,9 @@ static const int kProfileIndex = 1;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MenuCellIdentifier];
 }
 
-#pragma mark - UITableViewDelegate Methods
+#pragma mark - UITableViewDataSource Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,6 +74,14 @@ static const int kProfileIndex = 1;
         return;
     }
     switch (indexPath.row) {
+        case kSearchIndex: {
+            cell.textLabel.text = NSLocalizedString(@"Search", @"Search");
+            break;
+        }
+        case kRoomsIndex: {
+            cell.textLabel.text = NSLocalizedString(@"Rooms", @"Rooms");
+            break;
+        }
         case kPlaylistIndex: {
             cell.textLabel.text = NSLocalizedString(@"Playlists", @"Playlists");
             break;
@@ -71,16 +90,29 @@ static const int kProfileIndex = 1;
             cell.textLabel.text = NSLocalizedString(@"Profile", @"Profile");
             break;
         }
+        case kSettingsIndex: {
+            cell.textLabel.text = NSLocalizedString(@"Settings", @"Settings");
+            break;
+        }
         default:
             break;
     }
 }
 
+#pragma mark - UITableViewDelegate Methods
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section != 0) {
         return;
     }
     switch (indexPath.row) {
+        case kSearchIndex: {
+            [self searchTapped];
+            break;
+        }
+        case kRoomsIndex: {
+            [self roomsTapped];
+            break;
+        }
         case kPlaylistIndex: {
             [self playlistTapped];
             break;
@@ -89,27 +121,57 @@ static const int kProfileIndex = 1;
             [self profileTapped];
             break;
         }
+        case kSettingsIndex: {
+            [self settingsTapped];
+            break;
+        }
         default:
             break;
     }
 }
 
-- (void)playlistTapped {
-    if (self.sideMenuViewController.mainViewController == self.playlistViewController) {
+#pragma mark - Menu Options
+- (void)searchTapped {
+    if (self.sideMenuViewController.mainViewController == self.searchNavController) {
         [self closeSideMenu];
     } else {
-        [self.sideMenuViewController setMainViewController:self.playlistViewController animated:YES closeMenu:YES];
+        [self.sideMenuViewController setMainViewController:self.searchNavController animated:YES closeMenu:YES];
+    }
+}
+
+- (void)roomsTapped {
+    if (self.sideMenuViewController.mainViewController == self.roomsNavController) {
+        [self closeSideMenu];
+    } else {
+        [self.sideMenuViewController setMainViewController:self.roomsNavController animated:YES closeMenu:YES];
+    }
+}
+
+- (void)playlistTapped {
+    if (self.sideMenuViewController.mainViewController == self.playlistNavController) {
+        [self closeSideMenu];
+    } else {
+        [self.sideMenuViewController setMainViewController:self.playlistNavController animated:YES closeMenu:YES];
     }
 }
 
 - (void)profileTapped {
-    if (self.sideMenuViewController.mainViewController == self.profileViewController) {
+    if (self.sideMenuViewController.mainViewController == self.profileNavController) {
         [self closeSideMenu];
     } else {
-        [self.sideMenuViewController setMainViewController:self.profileViewController animated:YES closeMenu:YES];
+        [self.sideMenuViewController setMainViewController:self.profileNavController animated:YES closeMenu:YES];
     }
 }
 
+- (void)settingsTapped {
+    if (self.sideMenuViewController.mainViewController == self.settingsNavController) {
+        [self closeSideMenu];
+    } else {
+        [self.sideMenuViewController setMainViewController:self.settingsNavController animated:YES closeMenu:YES];
+    }
+}
+
+#pragma mark - Menu Actions
 - (void)closeSideMenu {
     [self.sideMenuViewController closeMenuAnimated:YES completion:nil];
 }
