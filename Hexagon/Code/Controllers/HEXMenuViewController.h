@@ -10,7 +10,7 @@
 #import "HEXPlaylistViewController.h"
 #import "HEXProfileViewController.h"
 
-@interface HEXMenuViewController : UIViewController
+@interface HEXMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) HEXPlaylistViewController *playlistViewController;
 @property (nonatomic, strong) HEXProfileViewController *profileViewController;

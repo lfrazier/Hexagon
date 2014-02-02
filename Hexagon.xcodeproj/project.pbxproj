@@ -29,6 +29,7 @@
 		89AC03EA189DCA9C00B71F89 /* HEXMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AC03E8189DCA9C00B71F89 /* HEXMenuViewController.m */; };
 		89AC03EB189DCA9C00B71F89 /* HEXMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89AC03E9189DCA9C00B71F89 /* HEXMenuViewController.xib */; };
 		89AC03F0189DD32300B71F89 /* HEXSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AC03EF189DD32300B71F89 /* HEXSlidingViewController.m */; };
+		89AC03F3189DDA1900B71F89 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89AC03F2189DDA1900B71F89 /* Localizable.strings */; };
 		AA2A59A7A9CD4BC7840955C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC44CDA0E8C4C45B82441EE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		89AC03ED189DCE2A00B71F89 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		89AC03EE189DD32300B71F89 /* HEXSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXSlidingViewController.h; sourceTree = "<group>"; };
 		89AC03EF189DD32300B71F89 /* HEXSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXSlidingViewController.m; sourceTree = "<group>"; };
+		89AC03F2189DDA1900B71F89 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		9AC44CDA0E8C4C45B82441EE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 				89AC039E189DB85C00B71F89 /* InfoPlist.strings */,
 				89AC03A1189DB85C00B71F89 /* main.m */,
 				89AC03A3189DB85C00B71F89 /* Hexagon-Prefix.pch */,
+				89AC03F2189DDA1900B71F89 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89AC03EB189DCA9C00B71F89 /* HEXMenuViewController.xib in Resources */,
+				89AC03F3189DDA1900B71F89 /* Localizable.strings in Resources */,
 				89AC03DF189DC74C00B71F89 /* HEXPlaylistViewController.xib in Resources */,
 				89AC03A0189DB85C00B71F89 /* InfoPlist.strings in Resources */,
 				89AC03E5189DC92D00B71F89 /* HEXProfileViewController.xib in Resources */,
