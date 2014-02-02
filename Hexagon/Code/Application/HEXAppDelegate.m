@@ -7,6 +7,16 @@
 //
 
 #import "HEXAppDelegate.h"
+#import "HEXMenuViewController.h"
+#import "HEXPlaylistViewController.h"
+
+@interface HEXAppDelegate ()
+
+@property (nonatomic, strong) TWTSideMenuViewController *sideMenuViewController;
+@property (nonatomic, strong) HEXMenuViewController *menuViewController;
+@property (nonatomic, strong) UIViewController *mainViewController;
+
+@end
 
 @implementation HEXAppDelegate
 
@@ -17,7 +27,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
+    // TWTSideMenuViewController Code
+    self.menuViewController = [[HEXMenuViewController alloc] initWithNibName:NSStringFromClass([HEXMenuViewController class]) bundle:nil];
+    self.mainViewController = self.menuViewController.playlistViewController;
+    // create a new side menu
+    self.sideMenuViewController = [[TWTSideMenuViewController alloc] initWithMenuViewController:self.menuViewController mainViewController:[[UINavigationController alloc] initWithRootViewController:self.mainViewController]];
+    // specify the shadow color to use behind the main view controller when it is scaled down.
+    self.sideMenuViewController.shadowColor = [UIColor blackColor];
+    // specify a UIOffset to offset the open position of the menu
+    self.sideMenuViewController.edgeOffset = UIOffsetMake(18.0f, 0.0f);
+    // specify a scale to zoom the interface — the scale is 0.0 (scaled to 0% of it's size) to 1.0 (not scaled at all). The example here specifies that it zooms so that the main view is 56.34% of it's size in open mode.
+    self.sideMenuViewController.zoomScale = kMenuZoom;
+    // set the side menu controller as the root view controller
+    self.window.rootViewController = self.sideMenuViewController;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TWTSideMenuViewController/TWTSideMenuViewController.h>
 
-@interface HEXAppDelegate : UIResponder <UIApplicationDelegate>
+@interface HEXAppDelegate : UIResponder <UIApplicationDelegate, TWTSideMenuViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
