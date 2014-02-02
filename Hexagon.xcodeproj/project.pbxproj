@@ -28,6 +28,7 @@
 		89AC03E5189DC92D00B71F89 /* HEXProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89AC03E3189DC92D00B71F89 /* HEXProfileViewController.xib */; };
 		89AC03EA189DCA9C00B71F89 /* HEXMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AC03E8189DCA9C00B71F89 /* HEXMenuViewController.m */; };
 		89AC03EB189DCA9C00B71F89 /* HEXMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89AC03E9189DCA9C00B71F89 /* HEXMenuViewController.xib */; };
+		89AC03F0189DD32300B71F89 /* HEXSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AC03EF189DD32300B71F89 /* HEXSlidingViewController.m */; };
 		AA2A59A7A9CD4BC7840955C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC44CDA0E8C4C45B82441EE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,8 @@
 		89AC03E8189DCA9C00B71F89 /* HEXMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXMenuViewController.m; sourceTree = "<group>"; };
 		89AC03E9189DCA9C00B71F89 /* HEXMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEXMenuViewController.xib; sourceTree = "<group>"; };
 		89AC03ED189DCE2A00B71F89 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		89AC03EE189DD32300B71F89 /* HEXSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXSlidingViewController.h; sourceTree = "<group>"; };
+		89AC03EF189DD32300B71F89 /* HEXSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXSlidingViewController.m; sourceTree = "<group>"; };
 		9AC44CDA0E8C4C45B82441EE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -194,6 +197,7 @@
 				89AC03EC189DCA9F00B71F89 /* Menu */,
 				89AC03E0189DC91B00B71F89 /* Playlists */,
 				89AC03E6189DC93100B71F89 /* Me */,
+				89AC03F1189DD32700B71F89 /* Sliding View Controller */,
 			);
 			name = Controllers;
 			path = Code/Controllers;
@@ -252,6 +256,15 @@
 				89AC03E9189DCA9C00B71F89 /* HEXMenuViewController.xib */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		89AC03F1189DD32700B71F89 /* Sliding View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				89AC03EE189DD32300B71F89 /* HEXSlidingViewController.h */,
+				89AC03EF189DD32300B71F89 /* HEXSlidingViewController.m */,
+			);
+			name = "Sliding View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89AC03E4189DC92D00B71F89 /* HEXProfileViewController.m in Sources */,
+				89AC03F0189DD32300B71F89 /* HEXSlidingViewController.m in Sources */,
 				89AC03DE189DC74C00B71F89 /* HEXPlaylistViewController.m in Sources */,
 				89AC03A9189DB85C00B71F89 /* Hexagon.xcdatamodeld in Sources */,
 				89AC03EA189DCA9C00B71F89 /* HEXMenuViewController.m in Sources */,

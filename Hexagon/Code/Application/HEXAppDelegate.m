@@ -32,13 +32,13 @@
     self.menuViewController = [[HEXMenuViewController alloc] initWithNibName:NSStringFromClass([HEXMenuViewController class]) bundle:nil];
     self.mainViewController = self.menuViewController.playlistViewController;
     // create a new side menu
-    self.sideMenuViewController = [[TWTSideMenuViewController alloc] initWithMenuViewController:self.menuViewController mainViewController:[[UINavigationController alloc] initWithRootViewController:self.mainViewController]];
+    self.sideMenuViewController = [[TWTSideMenuViewController alloc] initWithMenuViewController:self.menuViewController mainViewController:self.mainViewController];
     // specify the shadow color to use behind the main view controller when it is scaled down.
     self.sideMenuViewController.shadowColor = [UIColor blackColor];
-    // specify a UIOffset to offset the open position of the menu
-    self.sideMenuViewController.edgeOffset = UIOffsetMake(18.0f, 0.0f);
-    // specify a scale to zoom the interface — the scale is 0.0 (scaled to 0% of it's size) to 1.0 (not scaled at all). The example here specifies that it zooms so that the main view is 56.34% of it's size in open mode.
+    // zoom scale
     self.sideMenuViewController.zoomScale = kMenuZoom;
+    // fade the new view in, rather than sliding it
+    self.sideMenuViewController.animationType = TWTSideMenuAnimationTypeFadeIn;
     // set the side menu controller as the root view controller
     self.window.rootViewController = self.sideMenuViewController;
     

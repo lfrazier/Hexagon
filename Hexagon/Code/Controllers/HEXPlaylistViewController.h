@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HEXSlidingViewController.h"
 
-@interface HEXPlaylistViewController : UIViewController
+@interface HEXPlaylistViewController : HEXSlidingViewController
 
 @end

@@ -9,6 +9,6 @@
 #ifndef Hexagon_Constants_h
 #define Hexagon_Constants_h
 
-static const float kMenuZoom = 0.75;
+static const float kMenuZoom = 0.85;
 
 #endif

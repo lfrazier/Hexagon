@@ -32,11 +32,19 @@
 }
 
 - (IBAction)playlistButtonPressed:(id)sender {
-    [self.sideMenuViewController setMainViewController:self.playlistViewController animated:YES closeMenu:YES];
+    if (self.sideMenuViewController.mainViewController == self.playlistViewController) {
+        [self.sideMenuViewController closeMenuAnimated:YES completion:nil];
+    } else {
+        [self.sideMenuViewController setMainViewController:self.playlistViewController animated:YES closeMenu:YES];
+    }
 }
 
 - (IBAction)profileButtonPressed:(id)sender {
-    [self.sideMenuViewController setMainViewController:self.profileViewController animated:YES closeMenu:YES];
+    if (self.sideMenuViewController.mainViewController == self.profileViewController) {
+        [self.sideMenuViewController closeMenuAnimated:YES completion:nil];
+    } else {
+        [self.sideMenuViewController setMainViewController:self.profileViewController animated:YES closeMenu:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning

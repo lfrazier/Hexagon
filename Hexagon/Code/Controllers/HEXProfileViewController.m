@@ -30,7 +30,7 @@
 }
 
 - (IBAction)openButtonPressed:(id)sender {
-    [self.sideMenuViewController openMenuAnimated:YES completion:nil];
+    [self openSideMenu];
 }
 
 - (void)didReceiveMemoryWarning
