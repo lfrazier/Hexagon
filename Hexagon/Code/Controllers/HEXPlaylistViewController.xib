@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HEXPlaylistViewController">
             <connections>
+                <outlet property="tableView" destination="pRt-8v-GIb" id="3v3-U9-TB6"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
