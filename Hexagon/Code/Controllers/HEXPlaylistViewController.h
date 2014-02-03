@@ -10,6 +10,6 @@
 #import "HEXSlidingViewController.h"
 #import <CocoaLibSpotify/CocoaLibSpotify.h>
 
-@interface HEXPlaylistViewController : HEXSlidingViewController <UITableViewDataSource, UITableViewDelegate>
+@interface HEXPlaylistViewController : HEXSlidingViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
 @end

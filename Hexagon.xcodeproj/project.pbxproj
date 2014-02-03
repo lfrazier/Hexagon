@@ -37,6 +37,7 @@
 		89AC0404189E08BD00B71F89 /* HEXRoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AC0402189E08BD00B71F89 /* HEXRoomsViewController.m */; };
 		89AC0405189E08BD00B71F89 /* HEXRoomsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89AC0403189E08BD00B71F89 /* HEXRoomsViewController.xib */; };
 		89B77451189EC0F80045CBC4 /* HEXSpotifyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B77450189EC0F80045CBC4 /* HEXSpotifyManager.m */; };
+		89B77457189F59880045CBC4 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B77456189F59880045CBC4 /* Playlist.m */; };
 		AA2A59A7A9CD4BC7840955C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC44CDA0E8C4C45B82441EE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,8 @@
 		89B7744F189EC0F80045CBC4 /* HEXSpotifyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXSpotifyManager.h; sourceTree = "<group>"; };
 		89B77450189EC0F80045CBC4 /* HEXSpotifyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXSpotifyManager.m; sourceTree = "<group>"; };
 		89B77453189EC5460045CBC4 /* appkey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = appkey.c; sourceTree = "<group>"; };
+		89B77455189F59880045CBC4 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
+		89B77456189F59880045CBC4 /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
 		9AC44CDA0E8C4C45B82441EE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -240,6 +243,8 @@
 			isa = PBXGroup;
 			children = (
 				89AC03A7189DB85C00B71F89 /* Hexagon.xcdatamodeld */,
+				89B77455189F59880045CBC4 /* Playlist.h */,
+				89B77456189F59880045CBC4 /* Playlist.m */,
 				89B77453189EC5460045CBC4 /* appkey.c */,
 				89B7744F189EC0F80045CBC4 /* HEXSpotifyManager.h */,
 				89B77450189EC0F80045CBC4 /* HEXSpotifyManager.m */,
@@ -470,6 +475,7 @@
 				89AC0404189E08BD00B71F89 /* HEXRoomsViewController.m in Sources */,
 				89AC03DE189DC74C00B71F89 /* HEXPlaylistViewController.m in Sources */,
 				89AC03A9189DB85C00B71F89 /* Hexagon.xcdatamodeld in Sources */,
+				89B77457189F59880045CBC4 /* Playlist.m in Sources */,
 				89AC03EA189DCA9C00B71F89 /* HEXMenuViewController.m in Sources */,
 				89AC03DA189DC32E00B71F89 /* HEXAppDelegate.m in Sources */,
 				89AC03F7189E05D200B71F89 /* HEXSearchViewController.m in Sources */,

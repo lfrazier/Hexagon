@@ -8,14 +8,18 @@
 
 #import "HEXSpotifyManager.h"
 #import "HEXAppDelegate.h"
+#import "Playlist.h"
 #import "appkey.c"
 
 @interface HEXSpotifyManager ()
 
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end
 
 @implementation HEXSpotifyManager
+
+@synthesize managedObjectContext = _managedObjectContext;
 
 + (instancetype)sharedInstance {
     static dispatch_once_t predicate;
@@ -24,6 +28,13 @@
         sharedInstance = [[self alloc] init];
     });
     return sharedInstance;
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    if (!_managedObjectContext) {
+        _managedObjectContext = ((HEXAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+    }
+    return _managedObjectContext;
 }
 
 #pragma mark - Spotify Login
@@ -87,6 +98,9 @@
 				// All of our playlists have loaded their metadata — wait for all tracks to load their metadata.
 				NSLog(@"[%@ %@]: %@ of %@ playlists loaded.", NSStringFromClass([self class]), NSStringFromSelector(_cmd),
 					  [NSNumber numberWithInteger:loadedPlaylists.count], [NSNumber numberWithInteger:loadedPlaylists.count + notLoadedPlaylists.count]);
+                
+                // Insert into CoreData
+                [self createPlaylistsFromSPPlaylists:loadedPlaylists];
 				
 				NSArray *playlistItems = [loadedPlaylists valueForKeyPath:@"@unionOfArrays.items"];
 				NSArray *tracks = [self tracksFromPlaylistItems:playlistItems];
@@ -115,7 +129,7 @@
 	}];
 }
 
--(NSArray *)tracksFromPlaylistItems:(NSArray *)items {
+- (NSArray *)tracksFromPlaylistItems:(NSArray *)items {
 	
 	NSMutableArray *tracks = [NSMutableArray arrayWithCapacity:items.count];
 	
@@ -126,6 +140,17 @@
 	}
 	
 	return [NSArray arrayWithArray:tracks];
+}
+
+- (void)createPlaylistsFromSPPlaylists:(NSArray *)spplaylists {
+    for (SPPlaylist *spplaylist in spplaylists) {
+        // TODO: Check for duplicates before inserting into Core Data
+        Playlist *playlist = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Playlist class]) inManagedObjectContext:self.managedObjectContext];
+        playlist.spotifyURL = spplaylist.spotifyURL.absoluteString;
+        playlist.name = spplaylist.name;
+        playlist.playlistDescription = spplaylist.playlistDescription;
+    }
+    [self.managedObjectContext save:nil];
 }
 
 #pragma mark SPSessionDelegate Methods
@@ -149,6 +174,7 @@
 
 - (void)sessionDidLoginSuccessfully:(SPSession *)aSession; {
 	// Invoked by SPSession after a successful login.
+    [self fetchPlaylists];
 }
 
 - (void)session:(SPSession *)aSession didFailToLoginWithError:(NSError *)error; {
