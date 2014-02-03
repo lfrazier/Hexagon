@@ -1,0 +1,4 @@
+<map id="+[SPArtistBrowse browseArtistAtURL:inSession:type:callback:]" name="+[SPArtistBrowse browseArtistAtURL:inSession:type:callback:]">
+<area shape="rect" id="node2" href="$interface_s_p_artist.html#a9efce880bb44e7ed1c5779bcc7720469" title="+[SPArtist artistWithArtist\lURL:inSession:callback:]" alt="" coords="265,5,434,43"/>
+<area shape="rect" id="node3" href="$interface_s_p_artist.html#a4e398209fe36381926fd062b2622e9ad" title="+[SPArtist artistWithArtist\lStruct:inSession:]" alt="" coords="483,5,653,43"/>
+</map>

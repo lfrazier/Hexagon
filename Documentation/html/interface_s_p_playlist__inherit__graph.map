@@ -1,0 +1,6 @@
+<map id="SPPlaylist" name="SPPlaylist">
+<area shape="rect" id="node7" href="$interface_s_p_unknown_playlist.html" title="SPUnknownPlaylist" alt="" coords="125,305,261,330"/>
+<area shape="rect" id="node3" href="$protocol_s_p_playlistable_item-p.html" title="\&lt;SPPlaylistableItem\&gt;" alt="" coords="51,81,199,106"/>
+<area shape="rect" id="node5" href="$protocol_s_p_async_loading-p.html" title="\&lt;SPAsyncLoading\&gt;" alt="" coords="223,81,360,106"/>
+<area shape="rect" id="node6" href="$protocol_s_p_delayable_async_loading-p.html" title="\&lt;SPDelayableAsyncLoading\&gt;" alt="" coords="304,155,501,181"/>
+</map>

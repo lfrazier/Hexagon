@@ -1,0 +1,7 @@
+<map id="&#45;[SPSession userForUserStruct:]" name="&#45;[SPSession userForUserStruct:]">
+<area shape="rect" id="node2" href="$interface_s_p_session.html#a95ad276a244dbcd536eefc32cb4dd5f2" title="&#45;[SPSession userForURL\l:callback:]" alt="" coords="284,67,455,106"/>
+<area shape="rect" id="node5" href="$interface_s_p_user.html#a435f48b04cf448c6183fdfee2c273673" title="+[SPUser userWithUserStruct\l:inSession:]" alt="" coords="270,130,468,169"/>
+<area shape="rect" id="node3" href="$interface_s_p_session.html#a32f263a2fc00acaca897726fbfe1d74c" title="&#45;[SPSession objectRepresentation\lForSpotifyURL:callback:]" alt="" coords="517,5,742,43"/>
+<area shape="rect" id="node4" href="$interface_s_p_user.html#aefa14c765b7180618b4526a4de937c12" title="+[SPUser userWithURL\l:inSession:callback:]" alt="" coords="548,67,710,106"/>
+<area shape="rect" id="node6" href="$interface_s_p_session.html#a6dcb3f184acfe86b39cb7131750cccb4" title="&#45;[SPSession objectRepresentation\lForSpotifyURL:linkType:]" alt="" coords="517,130,742,169"/>
+</map>

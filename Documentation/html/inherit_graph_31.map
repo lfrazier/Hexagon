@@ -1,0 +1,14 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$interface_h_e_x_sliding_view_controller.html" title="HEXSlidingViewController" alt="" coords="283,115,458,141"/>
+<area shape="rect" id="node3" href="$interface_h_e_x_playlist_view_controller.html" title="HEXPlaylistViewController" alt="" coords="529,202,706,227"/>
+<area shape="rect" id="node4" href="$interface_h_e_x_profile_view_controller.html" title="HEXProfileViewController" alt="" coords="531,54,704,79"/>
+<area shape="rect" id="node5" href="$interface_h_e_x_rooms_view_controller.html" title="HEXRoomsViewController" alt="" coords="529,103,706,129"/>
+<area shape="rect" id="node6" href="$interface_h_e_x_search_view_controller.html" title="HEXSearchViewController" alt="" coords="529,153,706,178"/>
+<area shape="rect" id="node7" href="$interface_h_e_x_settings_view_controller.html" title="HEXSettingsViewController" alt="" coords="526,5,709,30"/>
+<area shape="rect" id="node9" href="$interface_h_e_x_menu_view_controller.html" title="HEXMenuViewController" alt="" coords="533,251,702,277"/>
+<area shape="rect" id="node12" href="$interface_s_p_login_logic_view_controller.html" title="SPLoginLogicViewController" alt="" coords="276,287,466,313"/>
+<area shape="rect" id="node14" href="$interface_s_p_client_upsell_view_controller.html" title="SPClientUpsellViewController" alt="" coords="272,389,469,414"/>
+<area shape="rect" id="node15" href="$interface_s_p_license_view_controller.html" title="SPLicenseViewController" alt="" coords="285,438,456,463"/>
+<area shape="rect" id="node16" href="$interface_s_p_signup_view_controller.html" title="SPSignupViewController" alt="" coords="287,487,454,513"/>
+<area shape="rect" id="node17" href="$interface_s_p_facebook_permissions_view_controller.html" title="SPFacebookPermissionsView\lController" alt="" coords="518,481,717,519"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="+[SPAlbum albumWithAlbumURL:inSession:callback:]" name="+[SPAlbum albumWithAlbumURL:inSession:callback:]">
+<area shape="rect" id="node2" href="$interface_s_p_album_browse.html#a39f463c5eb3998f0ba65d920b703fccb" title="+[SPAlbumBrowse browseAlbum\lAtURL:inSession:callback:]" alt="" coords="245,5,462,43"/>
+<area shape="rect" id="node3" href="$interface_s_p_session.html#a93a16657ec89a8936d40eb9b3e99ed02" title="&#45;[SPSession albumForURL\l:callback:]" alt="" coords="263,67,444,106"/>
+<area shape="rect" id="node4" href="$interface_s_p_session.html#a32f263a2fc00acaca897726fbfe1d74c" title="&#45;[SPSession objectRepresentation\lForSpotifyURL:callback:]" alt="" coords="509,67,734,106"/>
+</map>

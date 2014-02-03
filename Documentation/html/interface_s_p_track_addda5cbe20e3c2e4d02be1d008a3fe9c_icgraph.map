@@ -1,0 +1,4 @@
+<map id="+[SPTrack trackForTrackStruct:inSession:]" name="+[SPTrack trackForTrackStruct:inSession:]">
+<area shape="rect" id="node2" href="$interface_s_p_session.html#a6dcb3f184acfe86b39cb7131750cccb4" title="&#45;[SPSession objectRepresentation\lForSpotifyURL:linkType:]" alt="" coords="258,5,483,43"/>
+<area shape="rect" id="node3" href="$interface_s_p_track.html#ada9545402783e16252b3f3dc0c856e27" title="&#45;[SPTrack playableTrack]" alt="" coords="286,67,456,93"/>
+</map>

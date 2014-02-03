@@ -1,0 +1,7 @@
+<map id="HEXSlidingViewController" name="HEXSlidingViewController">
+<area shape="rect" id="node4" href="$interface_h_e_x_playlist_view_controller.html" title="HEXPlaylistViewController" alt="" coords="499,5,677,30"/>
+<area shape="rect" id="node5" href="$interface_h_e_x_profile_view_controller.html" title="HEXProfileViewController" alt="" coords="501,54,675,79"/>
+<area shape="rect" id="node6" href="$interface_h_e_x_rooms_view_controller.html" title="HEXRoomsViewController" alt="" coords="499,103,677,129"/>
+<area shape="rect" id="node7" href="$interface_h_e_x_search_view_controller.html" title="HEXSearchViewController" alt="" coords="499,153,677,178"/>
+<area shape="rect" id="node8" href="$interface_h_e_x_settings_view_controller.html" title="HEXSettingsViewController" alt="" coords="496,202,680,227"/>
+</map>

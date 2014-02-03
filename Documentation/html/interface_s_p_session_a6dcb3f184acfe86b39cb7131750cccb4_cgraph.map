@@ -1,0 +1,12 @@
+<map id="&#45;[SPSession objectRepresentationForSpotifyURL:linkType:]" name="&#45;[SPSession objectRepresentationForSpotifyURL:linkType:]">
+<area shape="rect" id="node2" href="$interface_s_p_track.html#addda5cbe20e3c2e4d02be1d008a3fe9c" title="+[SPTrack trackForTrackStruct\l:inSession:]" alt="" coords="278,5,482,43"/>
+<area shape="rect" id="node4" href="$interface_s_p_album.html#aebeb52e41e8ac1364a4342e60ad18dff" title="+[SPAlbum albumWithAlbum\lStruct:inSession:]" alt="" coords="284,67,476,106"/>
+<area shape="rect" id="node5" href="$interface_s_p_artist.html#a4e398209fe36381926fd062b2622e9ad" title="+[SPArtist artistWithArtist\lStruct:inSession:]" alt="" coords="295,130,465,169"/>
+<area shape="rect" id="node6" href="$interface_s_p_search.html#a23f65d3296a10353cbfbfd0a72134de5" title="+[SPSearch searchWithURL\l:inSession:]" alt="" coords="285,193,475,231"/>
+<area shape="rect" id="node7" href="$interface_s_p_playlist.html#a9c5219067adbc4b17c87c726e17786ba" title="+[SPPlaylist playlistWith\lPlaylistStruct:inSession:]" alt="" coords="296,255,464,294"/>
+<area shape="rect" id="node9" href="$interface_s_p_user.html#a435f48b04cf448c6183fdfee2c273673" title="+[SPUser userWithUserStruct\l:inSession:]" alt="" coords="281,318,479,357"/>
+<area shape="rect" id="node11" href="$interface_s_p_image.html#a980c4ecd18d56a4ce50e2d4a7264e89c" title="+[SPImage imageWithImage\lId:inSession:]" alt="" coords="284,381,476,419"/>
+<area shape="rect" id="node3" href="$interface_s_p_session.html#aaa47c732abcc31629b3c75509cf9f844" title="&#45;[SPSession trackForTrack\lStruct:]" alt="" coords="549,5,729,43"/>
+<area shape="rect" id="node8" href="$interface_s_p_session.html#af577bd4feb4772ecdf291075ab24207e" title="&#45;[SPSession playlistForPlaylist\lStruct:]" alt="" coords="538,255,739,294"/>
+<area shape="rect" id="node10" href="$interface_s_p_session.html#a5ebce5d648b5738b3254608490689135" title="&#45;[SPSession userForUserStruct:]" alt="" coords="531,325,746,350"/>
+</map>

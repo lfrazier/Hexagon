@@ -1,0 +1,12 @@
+<map id="&#45;[SPSearch addPageForArtists:albums:tracks:playlists:]" name="&#45;[SPSearch addPageForArtists:albums:tracks:playlists:]">
+<area shape="rect" id="node2" href="$interface_s_p_search.html#aee6efdaa320d43bf2f2297c4386d6ef4" title="&#45;[SPSearch initWithSearch\lQuery:pageSize:inSession:type:]" alt="" coords="259,98,474,137"/>
+<area shape="rect" id="node8" href="$interface_s_p_search.html#a0605ffb6f91b2d0f999d3967c4dccdd6" title="&#45;[SPSearch addTrackPage]" alt="" coords="275,161,458,186"/>
+<area shape="rect" id="node9" href="$interface_s_p_search.html#ac65adb4c5e3bb54febc0fa52b9d6970e" title="&#45;[SPSearch addArtistPage]" alt="" coords="276,210,457,235"/>
+<area shape="rect" id="node10" href="$interface_s_p_search.html#ad21a0198f904952d34c87cd669cb89c5" title="&#45;[SPSearch addAlbumPage]" alt="" coords="273,259,461,285"/>
+<area shape="rect" id="node11" href="$interface_s_p_search.html#a325fde86689603c3f07976a56dd2aecf" title="&#45;[SPSearch addPlaylistPage]" alt="" coords="270,309,463,334"/>
+<area shape="rect" id="node3" href="$interface_s_p_search.html#a59272ed51f40d95dee3fee071dfd0640" title="&#45;[SPSearch initWithURL\l:pageSize:inSession:]" alt="" coords="534,5,698,43"/>
+<area shape="rect" id="node5" href="$interface_s_p_search.html#a2c1a4dde938dd8bad28460c6f36bd6e3" title="&#45;[SPSearch initWithSearch\lQuery:inSession:]" alt="" coords="526,67,706,106"/>
+<area shape="rect" id="node6" href="$interface_s_p_search.html#a6fb52796a3a8784bfb2fde9eacd485fd" title="&#45;[SPSearch initWithSearch\lQuery:inSession:type:]" alt="" coords="526,130,706,169"/>
+<area shape="rect" id="node7" href="$interface_s_p_search.html#a96325b3aa619d742108c373ba3128c65" title="&#45;[SPSearch initWithSearch\lQuery:pageSize:inSession:]" alt="" coords="523,193,709,231"/>
+<area shape="rect" id="node4" href="$interface_s_p_search.html#a12c9cba71b874aab9d33df7d20d27d44" title="&#45;[SPSearch initWithURL\l:inSession:]" alt="" coords="758,5,922,43"/>
+</map>

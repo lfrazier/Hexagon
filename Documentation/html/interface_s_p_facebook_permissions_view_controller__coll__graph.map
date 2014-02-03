@@ -1,0 +1,12 @@
+<map id="SPFacebookPermissionsViewController" name="SPFacebookPermissionsViewController">
+<area shape="rect" id="node2" href="$interface_s_p_signup_view_controller.html" title="SPSignupViewController" alt="" coords="1131,87,1298,113"/>
+<area shape="rect" id="node5" href="$interface_s_p_session.html" title="SPSession" alt="" coords="861,447,947,473"/>
+<area shape="rect" id="node11" href="$interface_s_p_playlist.html" title="SPPlaylist" alt="" coords="1446,1063,1527,1089"/>
+<area shape="rect" id="node14" href="$interface_s_p_image.html" title="SPImage" alt="" coords="1177,918,1253,943"/>
+<area shape="rect" id="node15" href="$interface_s_p_playlist_container.html" title="SPPlaylistContainer" alt="" coords="1145,646,1284,671"/>
+<area shape="rect" id="node10" href="$interface_s_p_user.html" title="SPUser" alt="" coords="541,547,608,573"/>
+<area shape="rect" id="node7" href="$protocol_s_p_session_playback_provider-p.html" title="\&lt;SPSessionPlaybackProvider\&gt;" alt="" coords="312,366,518,391"/>
+<area shape="rect" id="node9" href="$protocol_s_p_async_loading-p.html" title="\&lt;SPAsyncLoading\&gt;" alt="" coords="150,923,287,949"/>
+<area shape="rect" id="node12" href="$protocol_s_p_playlistable_item-p.html" title="\&lt;SPPlaylistableItem\&gt;" alt="" coords="633,1291,781,1317"/>
+<area shape="rect" id="node13" href="$protocol_s_p_delayable_async_loading-p.html" title="\&lt;SPDelayableAsyncLoading\&gt;" alt="" coords="805,1017,1003,1042"/>
+</map>

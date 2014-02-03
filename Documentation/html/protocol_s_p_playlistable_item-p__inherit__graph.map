@@ -1,0 +1,7 @@
+<map id="&lt;SPPlaylistableItem&gt;" name="&lt;SPPlaylistableItem&gt;">
+<area shape="rect" id="node3" href="$interface_s_p_album.html" title="SPAlbum" alt="" coords="5,155,80,181"/>
+<area shape="rect" id="node4" href="$interface_s_p_artist.html" title="SPArtist" alt="" coords="104,155,172,181"/>
+<area shape="rect" id="node5" href="$interface_s_p_playlist.html" title="SPPlaylist" alt="" coords="197,155,277,181"/>
+<area shape="rect" id="node7" href="$interface_s_p_track.html" title="SPTrack" alt="" coords="301,155,372,181"/>
+<area shape="rect" id="node6" href="$interface_s_p_unknown_playlist.html" title="SPUnknownPlaylist" alt="" coords="169,230,305,255"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="SPPlaybackManager" name="SPPlaybackManager">
+<area shape="rect" id="node3" href="$protocol_s_p_session_playback_delegate-p.html" title="\&lt;SPSessionPlaybackDelegate\&gt;" alt="" coords="107,81,316,106"/>
+<area shape="rect" id="node5" href="$protocol_s_p_core_audio_controller_delegate-p.html" title="\&lt;SPCoreAudioControllerDelegate\&gt;" alt="" coords="340,81,568,106"/>
+</map>

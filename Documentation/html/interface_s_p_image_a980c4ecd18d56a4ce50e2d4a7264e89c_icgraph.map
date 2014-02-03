@@ -1,0 +1,6 @@
+<map id="+[SPImage imageWithImageId:inSession:]" name="+[SPImage imageWithImageId:inSession:]">
+<area shape="rect" id="node2" href="$interface_s_p_image.html#a075eacc7f0a2f8752624f6a7940f4771" title="+[SPImage imageWithImage\lURL:inSession:callback:]" alt="" coords="262,5,453,43"/>
+<area shape="rect" id="node5" href="$interface_s_p_session.html#a6dcb3f184acfe86b39cb7131750cccb4" title="&#45;[SPSession objectRepresentation\lForSpotifyURL:linkType:]" alt="" coords="245,67,470,106"/>
+<area shape="rect" id="node3" href="$interface_s_p_session.html#acc3fb3788456700377e6ac6a539a39cb" title="&#45;[SPSession imageForURL\l:callback:]" alt="" coords="517,5,699,43"/>
+<area shape="rect" id="node4" href="$interface_s_p_session.html#a32f263a2fc00acaca897726fbfe1d74c" title="&#45;[SPSession objectRepresentation\lForSpotifyURL:callback:]" alt="" coords="746,5,971,43"/>
+</map>

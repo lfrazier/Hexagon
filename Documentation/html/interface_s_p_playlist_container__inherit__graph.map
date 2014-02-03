@@ -1,0 +1,4 @@
+<map id="SPPlaylistContainer" name="SPPlaylistContainer">
+<area shape="rect" id="node3" href="$protocol_s_p_async_loading-p.html" title="\&lt;SPAsyncLoading\&gt;" alt="" coords="105,81,241,106"/>
+<area shape="rect" id="node5" href="$protocol_s_p_delayable_async_loading-p.html" title="\&lt;SPDelayableAsyncLoading\&gt;" alt="" coords="205,155,403,181"/>
+</map>

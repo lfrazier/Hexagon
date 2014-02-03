@@ -1,0 +1,4 @@
+<map id="+[SPUser userWithURL:inSession:callback:]" name="+[SPUser userWithURL:inSession:callback:]">
+<area shape="rect" id="node2" href="$interface_s_p_session.html#a95ad276a244dbcd536eefc32cb4dd5f2" title="&#45;[SPSession userForURL\l:callback:]" alt="" coords="216,5,387,43"/>
+<area shape="rect" id="node3" href="$interface_s_p_session.html#a5ebce5d648b5738b3254608490689135" title="&#45;[SPSession userForUserStruct:]" alt="" coords="435,11,650,37"/>
+</map>

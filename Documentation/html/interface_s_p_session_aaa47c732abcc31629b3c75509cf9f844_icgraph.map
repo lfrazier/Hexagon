@@ -1,0 +1,8 @@
+<map id="&#45;[SPSession trackForTrackStruct:]" name="&#45;[SPSession trackForTrackStruct:]">
+<area shape="rect" id="node2" href="$interface_s_p_session.html#af88910170da5fee0fb999c1bd3669182" title="&#45;[SPSession trackForURL\l:callback:]" alt="" coords="250,67,424,106"/>
+<area shape="rect" id="node5" href="$interface_s_p_track.html#addda5cbe20e3c2e4d02be1d008a3fe9c" title="+[SPTrack trackForTrackStruct\l:inSession:]" alt="" coords="235,130,439,169"/>
+<area shape="rect" id="node3" href="$interface_s_p_session.html#a32f263a2fc00acaca897726fbfe1d74c" title="&#45;[SPSession objectRepresentation\lForSpotifyURL:callback:]" alt="" coords="488,5,712,43"/>
+<area shape="rect" id="node4" href="$interface_s_p_track.html#a9607c90d3bb9e300d88cca986c29bd27" title="+[SPTrack trackForTrackURL\l:inSession:callback:]" alt="" coords="502,67,698,106"/>
+<area shape="rect" id="node6" href="$interface_s_p_session.html#a6dcb3f184acfe86b39cb7131750cccb4" title="&#45;[SPSession objectRepresentation\lForSpotifyURL:linkType:]" alt="" coords="488,130,712,169"/>
+<area shape="rect" id="node7" href="$interface_s_p_track.html#ada9545402783e16252b3f3dc0c856e27" title="&#45;[SPTrack playableTrack]" alt="" coords="515,193,685,218"/>
+</map>

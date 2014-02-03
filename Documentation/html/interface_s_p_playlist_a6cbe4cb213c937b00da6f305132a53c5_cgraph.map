@@ -1,0 +1,4 @@
+<map id="+[SPPlaylist playlistWithPlaylistURL:inSession:callback:]" name="+[SPPlaylist playlistWithPlaylistURL:inSession:callback:]">
+<area shape="rect" id="node2" href="$interface_s_p_session.html#ac7a51777ba6d7e52db9ac4acdecbaaee" title="&#45;[SPSession playlistForURL\l:callback:]" alt="" coords="264,5,450,43"/>
+<area shape="rect" id="node3" href="$interface_s_p_session.html#af577bd4feb4772ecdf291075ab24207e" title="&#45;[SPSession playlistForPlaylist\lStruct:]" alt="" coords="499,5,701,43"/>
+</map>

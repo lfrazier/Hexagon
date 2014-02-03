@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['waituntilloaded_3atimeout_3athen_3a',['waitUntilLoaded:timeout:then:',['../interface_s_p_async_loading.html#ab51ac2b7d2e2e5f03a9d6bbd0d4a50f5',1,'SPAsyncLoading::waitUntilLoaded:timeout:then:(id itemOrItems,[timeout] NSTimeInterval timeout,[then] void(^block)(NSArray *loadedItems, NSArray *notLoadedItems))'],['../interface_s_p_async_loading.html#ab51ac2b7d2e2e5f03a9d6bbd0d4a50f5',1,'SPAsyncLoading::waitUntilLoaded:timeout:then:(id itemOrItems,[timeout] NSTimeInterval timeout,[then] void(^block)(NSArray *loadedItems, NSArray *notLoadedItems))'],['../interface_s_p_async_loading.html#ab51ac2b7d2e2e5f03a9d6bbd0d4a50f5',1,'SPAsyncLoading::waitUntilLoaded:timeout:then:(id itemOrItems,[timeout] NSTimeInterval timeout,[then] void(^block)(NSArray *loadedItems, NSArray *notLoadedItems))']]]
+];

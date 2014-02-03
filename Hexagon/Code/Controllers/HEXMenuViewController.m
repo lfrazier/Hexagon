@@ -15,7 +15,8 @@
 
 @interface HEXMenuViewController ()
 
-@property (nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) UIImageView *backgroundImageView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *gestureRecognizer;
 
 @end
@@ -48,6 +49,12 @@ static const int kSettingsIndex = 4;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blurrystars2"]];
+    CGSize imageSize = [UIImage imageNamed:@"blurrystars2"].size;
+    [self.backgroundImageView setFrame:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+    [self.view addSubview:self.backgroundImageView];
+    [self.view sendSubviewToBack:self.backgroundImageView];
+    
     self.gestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(closeSideMenu)];
     self.gestureRecognizer.edges = UIRectEdgeRight;
     [self.view addGestureRecognizer:self.gestureRecognizer];
@@ -97,6 +104,8 @@ static const int kSettingsIndex = 4;
         default:
             break;
     }
+    cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
 }
 
 #pragma mark - UITableViewDelegate Methods

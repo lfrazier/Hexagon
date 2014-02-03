@@ -10,6 +10,8 @@
 
 @interface HEXRoomsViewController ()
 
+@property (nonatomic, weak) IBOutlet UITextField *textField;
+
 @end
 
 @implementation HEXRoomsViewController
@@ -27,6 +29,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+}
+
+- (IBAction)searchTapped:(id)sender {
+    NSLog(self.textField.text);
 }
 
 - (void)didReceiveMemoryWarning

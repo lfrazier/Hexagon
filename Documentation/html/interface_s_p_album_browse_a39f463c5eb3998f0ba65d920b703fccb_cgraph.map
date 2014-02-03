@@ -1,0 +1,5 @@
+<map id="+[SPAlbumBrowse browseAlbumAtURL:inSession:callback:]" name="+[SPAlbumBrowse browseAlbumAtURL:inSession:callback:]">
+<area shape="rect" id="node2" href="$interface_s_p_album.html#ab992b2fb6167984751b4f3bb26230e35" title="+[SPAlbum albumWithAlbum\lURL:inSession:callback:]" alt="" coords="281,5,473,43"/>
+<area shape="rect" id="node4" href="$interface_s_p_album_browse.html#a5dccad8d5f3ce1ab40293ab2a5719c0a" title="+[SPAlbumBrowse browseAlbum\l:inSession:]" alt="" coords="269,67,486,106"/>
+<area shape="rect" id="node3" href="$interface_s_p_album.html#aebeb52e41e8ac1364a4342e60ad18dff" title="+[SPAlbum albumWithAlbum\lStruct:inSession:]" alt="" coords="533,5,725,43"/>
+</map>

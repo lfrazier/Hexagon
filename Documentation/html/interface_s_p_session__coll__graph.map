@@ -1,0 +1,10 @@
+<map id="SPSession" name="SPSession">
+<area shape="rect" id="node7" href="$interface_s_p_playlist.html" title="SPPlaylist" alt="" coords="1358,929,1439,954"/>
+<area shape="rect" id="node10" href="$interface_s_p_image.html" title="SPImage" alt="" coords="1162,766,1238,791"/>
+<area shape="rect" id="node11" href="$interface_s_p_playlist_container.html" title="SPPlaylistContainer" alt="" coords="1130,445,1270,470"/>
+<area shape="rect" id="node6" href="$interface_s_p_user.html" title="SPUser" alt="" coords="541,198,608,223"/>
+<area shape="rect" id="node3" href="$protocol_s_p_session_playback_provider-p.html" title="\&lt;SPSessionPlaybackProvider\&gt;" alt="" coords="312,510,518,535"/>
+<area shape="rect" id="node5" href="$protocol_s_p_async_loading-p.html" title="\&lt;SPAsyncLoading\&gt;" alt="" coords="150,766,287,791"/>
+<area shape="rect" id="node8" href="$protocol_s_p_playlistable_item-p.html" title="\&lt;SPPlaylistableItem\&gt;" alt="" coords="633,1153,781,1178"/>
+<area shape="rect" id="node9" href="$protocol_s_p_delayable_async_loading-p.html" title="\&lt;SPDelayableAsyncLoading\&gt;" alt="" coords="805,865,1003,890"/>
+</map>

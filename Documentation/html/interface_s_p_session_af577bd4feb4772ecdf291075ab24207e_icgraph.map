@@ -1,0 +1,8 @@
+<map id="&#45;[SPSession playlistForPlaylistStruct:]" name="&#45;[SPSession playlistForPlaylistStruct:]">
+<area shape="rect" id="node2" href="$interface_s_p_playlist.html#a9c5219067adbc4b17c87c726e17786ba" title="+[SPPlaylist playlistWith\lPlaylistStruct:inSession:]" alt="" coords="270,5,437,43"/>
+<area shape="rect" id="node4" href="$interface_s_p_session.html#a7a44538800e4749af813a812067a0b89" title="&#45;[SPSession unknownPlaylist\lForPlaylistStruct:]" alt="" coords="256,67,450,106"/>
+<area shape="rect" id="node5" href="$interface_s_p_session.html#ac7a51777ba6d7e52db9ac4acdecbaaee" title="&#45;[SPSession playlistForURL\l:callback:]" alt="" coords="260,130,446,169"/>
+<area shape="rect" id="node3" href="$interface_s_p_session.html#a6dcb3f184acfe86b39cb7131750cccb4" title="&#45;[SPSession objectRepresentation\lForSpotifyURL:linkType:]" alt="" coords="498,5,723,43"/>
+<area shape="rect" id="node6" href="$interface_s_p_playlist.html#a6cbe4cb213c937b00da6f305132a53c5" title="+[SPPlaylist playlistWith\lPlaylistURL:inSession:callback:]" alt="" coords="505,98,716,137"/>
+<area shape="rect" id="node7" href="$interface_s_p_session.html#a32f263a2fc00acaca897726fbfe1d74c" title="&#45;[SPSession objectRepresentation\lForSpotifyURL:callback:]" alt="" coords="498,161,723,199"/>
+</map>

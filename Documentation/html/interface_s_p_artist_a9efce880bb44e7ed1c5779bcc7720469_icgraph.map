@@ -1,0 +1,5 @@
+<map id="+[SPArtist artistWithArtistURL:inSession:callback:]" name="+[SPArtist artistWithArtistURL:inSession:callback:]">
+<area shape="rect" id="node2" href="$interface_s_p_artist_browse.html#a7da46fdd527b3999f5354579d6510750" title="+[SPArtistBrowse browseArtist\lAtURL:inSession:type:callback:]" alt="" coords="224,5,434,43"/>
+<area shape="rect" id="node3" href="$interface_s_p_session.html#a62ef9abb652f4aa346f89815c19d9a1d" title="&#45;[SPSession artistForURL\l:callback:]" alt="" coords="242,67,416,106"/>
+<area shape="rect" id="node4" href="$interface_s_p_session.html#a32f263a2fc00acaca897726fbfe1d74c" title="&#45;[SPSession objectRepresentation\lForSpotifyURL:callback:]" alt="" coords="482,67,707,106"/>
+</map>

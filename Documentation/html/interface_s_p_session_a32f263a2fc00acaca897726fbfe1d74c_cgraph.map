@@ -1,0 +1,18 @@
+<map id="&#45;[SPSession objectRepresentationForSpotifyURL:callback:]" name="&#45;[SPSession objectRepresentationForSpotifyURL:callback:]">
+<area shape="rect" id="node2" href="$interface_s_p_session.html#af88910170da5fee0fb999c1bd3669182" title="&#45;[SPSession trackForURL\l:callback:]" alt="" coords="284,5,458,43"/>
+<area shape="rect" id="node4" href="$interface_s_p_session.html#a93a16657ec89a8936d40eb9b3e99ed02" title="&#45;[SPSession albumForURL\l:callback:]" alt="" coords="280,67,461,106"/>
+<area shape="rect" id="node7" href="$interface_s_p_session.html#a62ef9abb652f4aa346f89815c19d9a1d" title="&#45;[SPSession artistForURL\l:callback:]" alt="" coords="284,130,458,169"/>
+<area shape="rect" id="node10" href="$interface_s_p_session.html#ae12c3a89878dd206292f47e321311807" title="&#45;[SPSession searchForURL\l:callback:]" alt="" coords="278,193,463,231"/>
+<area shape="rect" id="node11" href="$interface_s_p_session.html#ac7a51777ba6d7e52db9ac4acdecbaaee" title="&#45;[SPSession playlistForURL\l:callback:]" alt="" coords="278,255,464,294"/>
+<area shape="rect" id="node13" href="$interface_s_p_session.html#a95ad276a244dbcd536eefc32cb4dd5f2" title="&#45;[SPSession userForURL\l:callback:]" alt="" coords="285,318,456,357"/>
+<area shape="rect" id="node15" href="$interface_s_p_session.html#acc3fb3788456700377e6ac6a539a39cb" title="&#45;[SPSession imageForURL\l:callback:]" alt="" coords="280,381,461,419"/>
+<area shape="rect" id="node3" href="$interface_s_p_session.html#aaa47c732abcc31629b3c75509cf9f844" title="&#45;[SPSession trackForTrack\lStruct:]" alt="" coords="530,5,710,43"/>
+<area shape="rect" id="node5" href="$interface_s_p_album.html#ab992b2fb6167984751b4f3bb26230e35" title="+[SPAlbum albumWithAlbum\lURL:inSession:callback:]" alt="" coords="524,67,716,106"/>
+<area shape="rect" id="node6" href="$interface_s_p_album.html#aebeb52e41e8ac1364a4342e60ad18dff" title="+[SPAlbum albumWithAlbum\lStruct:inSession:]" alt="" coords="776,67,968,106"/>
+<area shape="rect" id="node8" href="$interface_s_p_artist.html#a9efce880bb44e7ed1c5779bcc7720469" title="+[SPArtist artistWithArtist\lURL:inSession:callback:]" alt="" coords="535,130,705,169"/>
+<area shape="rect" id="node9" href="$interface_s_p_artist.html#a4e398209fe36381926fd062b2622e9ad" title="+[SPArtist artistWithArtist\lStruct:inSession:]" alt="" coords="787,130,957,169"/>
+<area shape="rect" id="node12" href="$interface_s_p_session.html#af577bd4feb4772ecdf291075ab24207e" title="&#45;[SPSession playlistForPlaylist\lStruct:]" alt="" coords="519,255,721,294"/>
+<area shape="rect" id="node14" href="$interface_s_p_session.html#a5ebce5d648b5738b3254608490689135" title="&#45;[SPSession userForUserStruct:]" alt="" coords="513,325,727,350"/>
+<area shape="rect" id="node16" href="$interface_s_p_image.html#a075eacc7f0a2f8752624f6a7940f4771" title="+[SPImage imageWithImage\lURL:inSession:callback:]" alt="" coords="524,381,716,419"/>
+<area shape="rect" id="node17" href="$interface_s_p_image.html#a980c4ecd18d56a4ce50e2d4a7264e89c" title="+[SPImage imageWithImage\lId:inSession:]" alt="" coords="776,381,968,419"/>
+</map>

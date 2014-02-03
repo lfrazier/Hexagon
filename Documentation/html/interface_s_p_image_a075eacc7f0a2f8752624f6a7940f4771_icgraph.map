@@ -1,0 +1,4 @@
+<map id="+[SPImage imageWithImageURL:inSession:callback:]" name="+[SPImage imageWithImageURL:inSession:callback:]">
+<area shape="rect" id="node2" href="$interface_s_p_session.html#acc3fb3788456700377e6ac6a539a39cb" title="&#45;[SPSession imageForURL\l:callback:]" alt="" coords="245,5,427,43"/>
+<area shape="rect" id="node3" href="$interface_s_p_session.html#a32f263a2fc00acaca897726fbfe1d74c" title="&#45;[SPSession objectRepresentation\lForSpotifyURL:callback:]" alt="" coords="474,5,699,43"/>
+</map>

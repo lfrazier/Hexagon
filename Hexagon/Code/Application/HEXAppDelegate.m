@@ -9,13 +9,12 @@
 #import "HEXAppDelegate.h"
 #import "HEXMenuViewController.h"
 #import "HEXPlaylistViewController.h"
-#import "appkey.c"
+#import "HEXSpotifyManager.h"
 
 @interface HEXAppDelegate ()
 
 @property (nonatomic, strong) TWTSideMenuViewController *sideMenuViewController;
 @property (nonatomic, strong) HEXMenuViewController *menuViewController;
-@property (nonatomic, strong) UIViewController *mainViewController;
 
 @end
 
@@ -31,7 +30,7 @@
     
     // TWTSideMenuViewController Code
     self.menuViewController = [[HEXMenuViewController alloc] initWithNibName:NSStringFromClass([HEXMenuViewController class]) bundle:nil];
-    self.mainViewController = self.menuViewController.playlistNavController;
+    self.mainViewController = self.menuViewController.roomsNavController;
     // create a new side menu
     self.sideMenuViewController = [[TWTSideMenuViewController alloc] initWithMenuViewController:self.menuViewController mainViewController:self.mainViewController];
     // specify the shadow color to use behind the main view controller when it is scaled down.
@@ -46,96 +45,12 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    NSError *error = nil;
-	[SPSession initializeSharedSessionWithApplicationKey:[NSData dataWithBytes:&g_appkey length:g_appkey_size]
-											   userAgent:@"com.spotify.SimplePlayer-iOS"
-										   loadingPolicy:SPAsyncLoadingManual
-												   error:&error];
-	if (error != nil) {
-		NSLog(@"CocoaLibSpotify init failed: %@", error);
-		abort();
-	}
-    [[SPSession sharedSession] setDelegate:self];
+    [[HEXSpotifyManager sharedInstance] setUpSession];
+    [[HEXSpotifyManager sharedInstance] logIn];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"MostRecentUser"] != nil) {
-        NSString *name = [defaults objectForKey:@"MostRecentUser"];
-        NSString *credential = [[defaults objectForKey:@"SpotifyUsers"] objectForKey:name];
-        [self attemptLoginWithName:name andCredential:credential];
-    } else {
-        [self performSelector:@selector(showLogin) withObject:nil afterDelay:0.0];
-    }
     return YES;
 }
 
-#pragma mark - Spotify
-- (void)attemptLoginWithName:(NSString *)name andCredential:(NSString *)credential {
-    [[SPSession sharedSession] attemptLoginWithUserName:name existingCredential:credential];
-}
-
-- (void)showLogin {
-    
-	SPLoginViewController *controller = [SPLoginViewController loginControllerForSession:[SPSession sharedSession]];
-	controller.allowsCancel = NO;
-	
-	[self.mainViewController presentViewController:controller animated:NO completion:nil];
-    
-}
-#pragma mark SPSessionDelegate Methods
-- (void)session:(SPSession *)aSession didGenerateLoginCredentials:(NSString *)credential forUserName:(NSString *)userName {
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *storedCredentials = [[defaults objectForKey:@"SpotifyUsers"] mutableCopy];
-    
-    if (storedCredentials == nil)
-        storedCredentials = [NSMutableDictionary dictionary];
-    
-    [storedCredentials setValue:credential forKey:userName];
-    [defaults setObject:storedCredentials forKey:@"SpotifyUsers"];
-    
-    [defaults setObject:userName forKey:@"MostRecentUser"];
-}
-
-- (UIViewController *)viewControllerToPresentLoginViewForSession:(SPSession *)aSession {
-	return self.mainViewController;
-}
-
-- (void)sessionDidLoginSuccessfully:(SPSession *)aSession; {
-	// Invoked by SPSession after a successful login.
-    NSLog(@"Success!");
-}
-
-- (void)session:(SPSession *)aSession didFailToLoginWithError:(NSError *)error; {
-	// Invoked by SPSession after a failed login.
-    [self showLogin];
-}
-
-- (void)sessionDidLogOut:(SPSession *)aSession {
-	
-	SPLoginViewController *controller = [SPLoginViewController loginControllerForSession:[SPSession sharedSession]];
-	
-	if (self.mainViewController.presentedViewController != nil) return;
-	
-	controller.allowsCancel = NO;
-	
-	[self.mainViewController presentViewController:controller
-                                          animated:YES
-                                        completion:nil];
-}
-
-- (void)session:(SPSession *)aSession didEncounterNetworkError:(NSError *)error; {}
-- (void)session:(SPSession *)aSession didLogMessage:(NSString *)aMessage; {}
-- (void)sessionDidChangeMetadata:(SPSession *)aSession; {}
-
-- (void)session:(SPSession *)aSession recievedMessageForUser:(NSString *)aMessage; {
-	return;
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message from Spotify"
-													message:aMessage
-												   delegate:nil
-										  cancelButtonTitle:@"OK"
-										  otherButtonTitles:nil];
-	[alert show];
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
