@@ -39,6 +39,8 @@
 		89B77451189EC0F80045CBC4 /* HEXSpotifyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B77450189EC0F80045CBC4 /* HEXSpotifyManager.m */; };
 		89B7746318A09D7C0045CBC4 /* HEXPlaylistDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7746118A09D7C0045CBC4 /* HEXPlaylistDetailViewController.m */; };
 		89B7746418A09D7C0045CBC4 /* HEXPlaylistDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B7746218A09D7C0045CBC4 /* HEXPlaylistDetailViewController.xib */; };
+		89B7746918A0C47F0045CBC4 /* HEXSongPlaybackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7746718A0C47F0045CBC4 /* HEXSongPlaybackViewController.m */; };
+		89B7746A18A0C47F0045CBC4 /* HEXSongPlaybackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B7746818A0C47F0045CBC4 /* HEXSongPlaybackViewController.xib */; };
 		AA2A59A7A9CD4BC7840955C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC44CDA0E8C4C45B82441EE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +102,9 @@
 		89B7746018A09D7C0045CBC4 /* HEXPlaylistDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXPlaylistDetailViewController.h; sourceTree = "<group>"; };
 		89B7746118A09D7C0045CBC4 /* HEXPlaylistDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXPlaylistDetailViewController.m; sourceTree = "<group>"; };
 		89B7746218A09D7C0045CBC4 /* HEXPlaylistDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEXPlaylistDetailViewController.xib; sourceTree = "<group>"; };
+		89B7746618A0C47F0045CBC4 /* HEXSongPlaybackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXSongPlaybackViewController.h; sourceTree = "<group>"; };
+		89B7746718A0C47F0045CBC4 /* HEXSongPlaybackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXSongPlaybackViewController.m; sourceTree = "<group>"; };
+		89B7746818A0C47F0045CBC4 /* HEXSongPlaybackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEXSongPlaybackViewController.xib; sourceTree = "<group>"; };
 		9AC44CDA0E8C4C45B82441EE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -220,6 +225,7 @@
 		89AC03D6189DC32E00B71F89 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				89B7746518A0C45E0045CBC4 /* Music Playback */,
 				89AC03EC189DCA9F00B71F89 /* Menu */,
 				89AC03F9189E05D600B71F89 /* Search */,
 				89AC0400189E060E00B71F89 /* Rooms */,
@@ -349,6 +355,16 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
+		89B7746518A0C45E0045CBC4 /* Music Playback */ = {
+			isa = PBXGroup;
+			children = (
+				89B7746618A0C47F0045CBC4 /* HEXSongPlaybackViewController.h */,
+				89B7746718A0C47F0045CBC4 /* HEXSongPlaybackViewController.m */,
+				89B7746818A0C47F0045CBC4 /* HEXSongPlaybackViewController.xib */,
+			);
+			name = "Music Playback";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -431,6 +447,7 @@
 				89AC0405189E08BD00B71F89 /* HEXRoomsViewController.xib in Resources */,
 				89AC03F3189DDA1900B71F89 /* Localizable.strings in Resources */,
 				89AC03DF189DC74C00B71F89 /* HEXPlaylistViewController.xib in Resources */,
+				89B7746A18A0C47F0045CBC4 /* HEXSongPlaybackViewController.xib in Resources */,
 				89AC03FE189E060000B71F89 /* HEXSettingsViewController.xib in Resources */,
 				89AC03A0189DB85C00B71F89 /* InfoPlist.strings in Resources */,
 				89AC03E5189DC92D00B71F89 /* HEXProfileViewController.xib in Resources */,
@@ -492,6 +509,7 @@
 				89B77451189EC0F80045CBC4 /* HEXSpotifyManager.m in Sources */,
 				89AC03E4189DC92D00B71F89 /* HEXProfileViewController.m in Sources */,
 				89AC03F0189DD32300B71F89 /* HEXSlidingViewController.m in Sources */,
+				89B7746918A0C47F0045CBC4 /* HEXSongPlaybackViewController.m in Sources */,
 				89AC0404189E08BD00B71F89 /* HEXRoomsViewController.m in Sources */,
 				89AC03DE189DC74C00B71F89 /* HEXPlaylistViewController.m in Sources */,
 				89AC03A9189DB85C00B71F89 /* Hexagon.xcdatamodeld in Sources */,

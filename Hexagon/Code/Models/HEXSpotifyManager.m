@@ -212,8 +212,16 @@
     self.playbackManager.isPlaying = NO;
 }
 
+- (void)resumeCurrentTrack {
+    self.playbackManager.isPlaying = YES;
+}
+
 - (void)seekCurrentTrackToPosition:(NSTimeInterval)position {
     [self.playbackManager seekToTrackPosition:position];
+}
+
+- (void)playbackManagerWillStartPlayingAudio:(SPPlaybackManager *)aPlaybackManager {
+    
 }
 
 @end

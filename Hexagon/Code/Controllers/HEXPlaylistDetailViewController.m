@@ -9,6 +9,7 @@
 #import "HEXPlaylistDetailViewController.h"
 #import "HEXAppDelegate.h"
 #import "HEXSpotifyManager.h"
+#import "HEXSongPlaybackViewController.h"
 
 @interface HEXPlaylistDetailViewController ()
 
@@ -85,7 +86,9 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SPTrack *track = self.tracks[indexPath.row];
-    [[HEXSpotifyManager sharedInstance] playTrack:track];
+    HEXSongPlaybackViewController *playbackController = [[HEXSongPlaybackViewController alloc] initWithNibName:NSStringFromClass([HEXSongPlaybackViewController class]) bundle:nil];
+    playbackController.track = track;
+    [self.navigationController pushViewController:playbackController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

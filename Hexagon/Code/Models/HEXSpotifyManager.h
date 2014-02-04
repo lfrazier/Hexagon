@@ -49,6 +49,8 @@
 
 - (void)pauseCurrentTrack;
 
+- (void)resumeCurrentTrack;
+
 - (void)seekCurrentTrackToPosition:(NSTimeInterval)position;
 
 @end
