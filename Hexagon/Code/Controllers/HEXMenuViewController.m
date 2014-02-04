@@ -12,22 +12,18 @@
 #import "HEXSettingsViewController.h"
 #import "HEXSearchViewController.h"
 #import "HEXRoomsViewController.h"
+#import "HEXInboxViewController.h"
 
 @interface HEXMenuViewController ()
 
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *gestureRecognizer;
+@property (nonatomic, strong) NSArray *menuOptionNavControllers;
 
 @end
 
 static NSString *MenuCellIdentifier = @"MenuCellIdentifier";
-
-static const int kSearchIndex = 0;
-static const int kRoomsIndex = 1;
-static const int kPlaylistIndex = 2;
-static const int kProfileIndex = 3;
-static const int kSettingsIndex = 4;
 
 @implementation HEXMenuViewController
 
@@ -39,8 +35,11 @@ static const int kSettingsIndex = 4;
         self.searchNavController = [[UINavigationController alloc] initWithRootViewController: [[HEXSearchViewController alloc] initWithNibName:NSStringFromClass([HEXSearchViewController class]) bundle:nil]];
         self.roomsNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXRoomsViewController alloc] initWithNibName:NSStringFromClass([HEXRoomsViewController class]) bundle:nil]];
         self.playlistNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXPlaylistViewController alloc] initWithNibName:NSStringFromClass([HEXPlaylistViewController class]) bundle:nil]];
+        self.inboxNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXInboxViewController alloc] initWithNibName:NSStringFromClass([HEXInboxViewController class]) bundle:nil]];
         self.profileNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXProfileViewController alloc] initWithNibName:NSStringFromClass([HEXProfileViewController class]) bundle:nil]];
         self.settingsNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXSettingsViewController alloc] initWithNibName:NSStringFromClass([HEXSettingsViewController class]) bundle:nil]];
+        
+        self.menuOptionNavControllers = @[self.searchNavController, self.roomsNavController, self.playlistNavController, self.inboxNavController, self.profileNavController, self.settingsNavController];
     }
     return self;
 }
@@ -64,7 +63,7 @@ static const int kSettingsIndex = 4;
 
 #pragma mark - UITableViewDataSource Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.menuOptionNavControllers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -80,30 +79,8 @@ static const int kSettingsIndex = 4;
     if (indexPath.section != 0) {
         return;
     }
-    switch (indexPath.row) {
-        case kSearchIndex: {
-            cell.textLabel.text = NSLocalizedString(@"Search", @"Search");
-            break;
-        }
-        case kRoomsIndex: {
-            cell.textLabel.text = NSLocalizedString(@"Rooms", @"Rooms");
-            break;
-        }
-        case kPlaylistIndex: {
-            cell.textLabel.text = NSLocalizedString(@"Playlists", @"Playlists");
-            break;
-        }
-        case kProfileIndex: {
-            cell.textLabel.text = NSLocalizedString(@"Profile", @"Profile");
-            break;
-        }
-        case kSettingsIndex: {
-            cell.textLabel.text = NSLocalizedString(@"Settings", @"Settings");
-            break;
-        }
-        default:
-            break;
-    }
+    UINavigationController *navController = self.menuOptionNavControllers[indexPath.row];
+    cell.textLabel.text = ((UIViewController *)navController.viewControllers[0]).title;
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
 }
@@ -113,70 +90,16 @@ static const int kSettingsIndex = 4;
     if (indexPath.section != 0) {
         return;
     }
-    switch (indexPath.row) {
-        case kSearchIndex: {
-            [self searchTapped];
-            break;
-        }
-        case kRoomsIndex: {
-            [self roomsTapped];
-            break;
-        }
-        case kPlaylistIndex: {
-            [self playlistTapped];
-            break;
-        }
-        case kProfileIndex: {
-            [self profileTapped];
-            break;
-        }
-        case kSettingsIndex: {
-            [self settingsTapped];
-            break;
-        }
-        default:
-            break;
-    }
+    UINavigationController *navController = self.menuOptionNavControllers[indexPath.row];
+    [self menuItemTappedWithNavController:navController];
 }
 
 #pragma mark - Menu Options
-- (void)searchTapped {
-    if (self.sideMenuViewController.mainViewController == self.searchNavController) {
+- (void)menuItemTappedWithNavController:(UINavigationController *)navController {
+    if (self.sideMenuViewController.mainViewController == navController) {
         [self closeSideMenu];
     } else {
-        [self.sideMenuViewController setMainViewController:self.searchNavController animated:YES closeMenu:YES];
-    }
-}
-
-- (void)roomsTapped {
-    if (self.sideMenuViewController.mainViewController == self.roomsNavController) {
-        [self closeSideMenu];
-    } else {
-        [self.sideMenuViewController setMainViewController:self.roomsNavController animated:YES closeMenu:YES];
-    }
-}
-
-- (void)playlistTapped {
-    if (self.sideMenuViewController.mainViewController == self.playlistNavController) {
-        [self closeSideMenu];
-    } else {
-        [self.sideMenuViewController setMainViewController:self.playlistNavController animated:YES closeMenu:YES];
-    }
-}
-
-- (void)profileTapped {
-    if (self.sideMenuViewController.mainViewController == self.profileNavController) {
-        [self closeSideMenu];
-    } else {
-        [self.sideMenuViewController setMainViewController:self.profileNavController animated:YES closeMenu:YES];
-    }
-}
-
-- (void)settingsTapped {
-    if (self.sideMenuViewController.mainViewController == self.settingsNavController) {
-        [self closeSideMenu];
-    } else {
-        [self.sideMenuViewController setMainViewController:self.settingsNavController animated:YES closeMenu:YES];
+        [self.sideMenuViewController setMainViewController:navController animated:YES closeMenu:YES];
     }
 }
 

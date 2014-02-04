@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UINavigationController *searchNavController;
 @property (nonatomic, strong) UINavigationController *roomsNavController;
 @property (nonatomic, strong) UINavigationController *playlistNavController;
+@property (nonatomic, strong) UINavigationController *inboxNavController;
 @property (nonatomic, strong) UINavigationController *profileNavController;
 @property (nonatomic, strong) UINavigationController *settingsNavController;
 

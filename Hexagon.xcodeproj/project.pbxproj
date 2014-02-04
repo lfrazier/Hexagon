@@ -41,6 +41,8 @@
 		89B7746418A09D7C0045CBC4 /* HEXPlaylistDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B7746218A09D7C0045CBC4 /* HEXPlaylistDetailViewController.xib */; };
 		89B7746918A0C47F0045CBC4 /* HEXSongPlaybackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7746718A0C47F0045CBC4 /* HEXSongPlaybackViewController.m */; };
 		89B7746A18A0C47F0045CBC4 /* HEXSongPlaybackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B7746818A0C47F0045CBC4 /* HEXSongPlaybackViewController.xib */; };
+		89B7746E18A131CA0045CBC4 /* HEXInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7746C18A131CA0045CBC4 /* HEXInboxViewController.m */; };
+		89B7746F18A131CA0045CBC4 /* HEXInboxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B7746D18A131CA0045CBC4 /* HEXInboxViewController.xib */; };
 		AA2A59A7A9CD4BC7840955C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC44CDA0E8C4C45B82441EE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +107,9 @@
 		89B7746618A0C47F0045CBC4 /* HEXSongPlaybackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXSongPlaybackViewController.h; sourceTree = "<group>"; };
 		89B7746718A0C47F0045CBC4 /* HEXSongPlaybackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXSongPlaybackViewController.m; sourceTree = "<group>"; };
 		89B7746818A0C47F0045CBC4 /* HEXSongPlaybackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEXSongPlaybackViewController.xib; sourceTree = "<group>"; };
+		89B7746B18A131CA0045CBC4 /* HEXInboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXInboxViewController.h; sourceTree = "<group>"; };
+		89B7746C18A131CA0045CBC4 /* HEXInboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXInboxViewController.m; sourceTree = "<group>"; };
+		89B7746D18A131CA0045CBC4 /* HEXInboxViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEXInboxViewController.xib; sourceTree = "<group>"; };
 		9AC44CDA0E8C4C45B82441EE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -225,14 +230,15 @@
 		89AC03D6189DC32E00B71F89 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				89B7746518A0C45E0045CBC4 /* Music Playback */,
 				89AC03EC189DCA9F00B71F89 /* Menu */,
 				89AC03F9189E05D600B71F89 /* Search */,
 				89AC0400189E060E00B71F89 /* Rooms */,
 				89AC03E0189DC91B00B71F89 /* Playlists */,
+				89B7747018A131CE0045CBC4 /* Inbox */,
 				89AC03E6189DC93100B71F89 /* Profile */,
 				89AC03FF189E060200B71F89 /* Settings */,
 				89AC03F1189DD32700B71F89 /* Sliding View Controller */,
+				89B7746518A0C45E0045CBC4 /* Music Playback */,
 			);
 			name = Controllers;
 			path = Code/Controllers;
@@ -365,6 +371,16 @@
 			name = "Music Playback";
 			sourceTree = "<group>";
 		};
+		89B7747018A131CE0045CBC4 /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				89B7746B18A131CA0045CBC4 /* HEXInboxViewController.h */,
+				89B7746C18A131CA0045CBC4 /* HEXInboxViewController.m */,
+				89B7746D18A131CA0045CBC4 /* HEXInboxViewController.xib */,
+			);
+			name = Inbox;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -446,6 +462,7 @@
 				89AC03EB189DCA9C00B71F89 /* HEXMenuViewController.xib in Resources */,
 				89AC0405189E08BD00B71F89 /* HEXRoomsViewController.xib in Resources */,
 				89AC03F3189DDA1900B71F89 /* Localizable.strings in Resources */,
+				89B7746F18A131CA0045CBC4 /* HEXInboxViewController.xib in Resources */,
 				89AC03DF189DC74C00B71F89 /* HEXPlaylistViewController.xib in Resources */,
 				89B7746A18A0C47F0045CBC4 /* HEXSongPlaybackViewController.xib in Resources */,
 				89AC03FE189E060000B71F89 /* HEXSettingsViewController.xib in Resources */,
@@ -514,6 +531,7 @@
 				89AC03DE189DC74C00B71F89 /* HEXPlaylistViewController.m in Sources */,
 				89AC03A9189DB85C00B71F89 /* Hexagon.xcdatamodeld in Sources */,
 				89B7746318A09D7C0045CBC4 /* HEXPlaylistDetailViewController.m in Sources */,
+				89B7746E18A131CA0045CBC4 /* HEXInboxViewController.m in Sources */,
 				89AC03EA189DCA9C00B71F89 /* HEXMenuViewController.m in Sources */,
 				89AC03DA189DC32E00B71F89 /* HEXAppDelegate.m in Sources */,
 				89AC03F7189E05D200B71F89 /* HEXSearchViewController.m in Sources */,
