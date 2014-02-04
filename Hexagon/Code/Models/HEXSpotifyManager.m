@@ -8,19 +8,16 @@
 
 #import "HEXSpotifyManager.h"
 #import "HEXAppDelegate.h"
-#import "Playlist.h"
-#import "Track.h"
 #import "appkey.c"
 
 @interface HEXSpotifyManager ()
 
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) SPPlaybackManager *playbackManager;
 
 @end
 
 @implementation HEXSpotifyManager
-
-@synthesize managedObjectContext = _managedObjectContext;
 
 + (instancetype)sharedInstance {
     static dispatch_once_t predicate;
@@ -36,6 +33,13 @@
         _managedObjectContext = ((HEXAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     }
     return _managedObjectContext;
+}
+
+- (SPPlaybackManager *)playbackManager {
+    if (!_playbackManager) {
+        _playbackManager = [[SPPlaybackManager alloc] initWithPlaybackSession:[SPSession sharedSession]];
+    }
+    return _playbackManager;
 }
 
 #pragma mark - Spotify Login/Logout
@@ -94,7 +98,7 @@
 			
 			// User playlists are loaded — wait for playlists to load their metadata.
 			NSLog(@"[%@ %@]: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), @"Container loaded.");
-			
+			         
 			NSMutableArray *playlists = [NSMutableArray array];
 			[playlists addObject:[SPSession sharedSession].starredPlaylist];
 			[playlists addObject:[SPSession sharedSession].inboxPlaylist];
@@ -106,132 +110,35 @@
 				NSLog(@"[%@ %@]: %@ of %@ playlists loaded.", NSStringFromClass([self class]), NSStringFromSelector(_cmd),
 					  [NSNumber numberWithInteger:loadedPlaylists.count], [NSNumber numberWithInteger:loadedPlaylists.count + notLoadedPlaylists.count]);
                 
+                [[NSNotificationCenter defaultCenter] postNotificationName:kPlaylistsLoadedNotification object:self];
                 
-                completion(YES);
-                // Insert into CoreData
-                //[self createPlaylistsFromSPPlaylists:loadedPlaylists];
-//				
-//				for (SPPlaylist *spplaylist in loadedPlaylists) {
-//                    [self fetchTracksFromSPPlaylist:spplaylist];
-//                }
+				NSArray *playlistItems = [loadedPlaylists valueForKeyPath:@"@unionOfArrays.items"];
+				NSArray *tracks = [self tracksFromPlaylistItems:playlistItems];
+				
+				[SPAsyncLoading waitUntilLoaded:tracks timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedTracks, NSArray *notLoadedTracks) {
+					
+					// All of our tracks have loaded their metadata. Hooray!
+					NSLog(@"[%@ %@]: %@ of %@ tracks loaded.", NSStringFromClass([self class]), NSStringFromSelector(_cmd),
+						  [NSNumber numberWithInteger:loadedTracks.count], [NSNumber numberWithInteger:loadedTracks.count + notLoadedTracks.count]);
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kPlaylistTracksLoadedNotification object:self];
+
+                    if (completion) {
+                        completion(YES);
+                    }
+                }];
 			}];
 		}];
 	}];
 }
 
-- (void)fetchTracksFromSPPlaylist:(SPPlaylist *)spplaylist {
-    NSArray *tracks = [self extractSPTracksFromSPPlaylist:spplaylist];
-    
-    [SPAsyncLoading waitUntilLoaded:tracks timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedTracks, NSArray *notLoadedTracks) {
-        
-        // All of our tracks have loaded their metadata. Hooray!
-        NSLog(@"[%@ %@]: %@ of %@ tracks loaded.", NSStringFromClass([self class]), NSStringFromSelector(_cmd),
-              [NSNumber numberWithInteger:loadedTracks.count], [NSNumber numberWithInteger:loadedTracks.count + notLoadedTracks.count]);
-            //[self createTracksFromSPTracks:loadedTracks addToPlaylist:[self playlistFromSPPlaylist:spplaylist]];
-    }];
-}
-
-- (NSArray *)extractSPTracksFromSPPlaylist:(SPPlaylist *)spplaylist {
-	NSMutableArray *tracks = [NSMutableArray arrayWithCapacity:spplaylist.items.count];
-	for (SPPlaylistItem *anItem in spplaylist.items) {
+- (NSArray *)tracksFromPlaylistItems:(NSArray *)items {
+	NSMutableArray *tracks = [NSMutableArray arrayWithCapacity:items.count];
+	for (SPPlaylistItem *anItem in items) {
 		if (anItem.itemClass == [SPTrack class]) {
 			[tracks addObject:anItem.item];
 		}
 	}
 	return [NSArray arrayWithArray:tracks];
-}
-
-
-#pragma mark Adapt to Core Data
-- (void)createPlaylistsFromSPPlaylists:(NSArray *)spplaylists {
-    for (SPPlaylist *spplaylist in spplaylists) {
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Playlist class]) inManagedObjectContext:self.managedObjectContext];
-        [fetchRequest setEntity:entity];
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"spotifyURL == %@", spplaylist.spotifyURL];
-        [fetchRequest setPredicate:predicate];
-        
-        NSError *error = nil;
-        NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        if (fetchedObjects == nil) {
-            NSLog(@"Core Data: error fetching playlists");
-        }
-
-        Playlist *playlist;
-        if (fetchedObjects.count == 1) {
-            // There is one object, just update the fields.
-            playlist = [fetchedObjects firstObject];
-        } else if (fetchedObjects.count > 1) {
-            // There were multiple objects. Delete them all and make a new one.
-            for (Playlist *duplicate in fetchedObjects) {
-                [self.managedObjectContext deleteObject:duplicate];
-            }
-            playlist = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Playlist class]) inManagedObjectContext:self.managedObjectContext];
-        } else {
-            // There were no objects, make a new one.
-            playlist = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Playlist class]) inManagedObjectContext:self.managedObjectContext];
-        }
-        playlist.spotifyURL = spplaylist.spotifyURL.absoluteString;
-        playlist.name = spplaylist.name;
-        playlist.playlistDescription = spplaylist.playlistDescription;
-        playlist.userOrder = @([spplaylists indexOfObject:spplaylist]);
-    }
-    [self.managedObjectContext save:nil];
-}
-
-- (void)createTracksFromSPTracks:(NSArray *)sptracks addToPlaylist:(Playlist *)playlist {
-    for (SPTrack *sptrack in sptracks) {
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Track class]) inManagedObjectContext:self.managedObjectContext];
-        [fetchRequest setEntity:entity];
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"spotifyURL == %@", sptrack.spotifyURL];
-        [fetchRequest setPredicate:predicate];
-        
-        NSError *error = nil;
-        NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        if (fetchedObjects == nil) {
-            NSLog(@"Core Data: error fetching playlists");
-        }
-        
-        Track *track;
-        if (fetchedObjects.count == 1) {
-            // There is one object, just update the fields.
-            track = [fetchedObjects firstObject];
-        } else if (fetchedObjects.count > 1) {
-            // There were multiple objects. Delete them all and make a new one.
-            for (Track *duplicate in fetchedObjects) {
-                [self.managedObjectContext deleteObject:duplicate];
-            }
-            track = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Track class]) inManagedObjectContext:self.managedObjectContext];
-        } else {
-            // There were no objects, make a new one.
-            track = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Track class]) inManagedObjectContext:self.managedObjectContext];
-        }
-        track.spotifyURL = sptrack.spotifyURL.absoluteString;
-        track.name = sptrack.name;
-        track.duration = @(sptrack.duration);
-        track.userOrder = @([sptracks indexOfObject:sptrack]);
-        [track addPlaylistsObject:playlist];
-    }
-    [self.managedObjectContext save:nil];
-}
-
-- (Playlist *)playlistFromSPPlaylist:(SPPlaylist *)spplaylist {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Playlist class]) inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"spotifyURL == %@", spplaylist.spotifyURL];
-    [fetchRequest setPredicate:predicate];
-    
-    NSError *error = nil;
-    NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    if (fetchedObjects == nil) {
-        NSLog(@"Core Data: error fetching playlists");
-    }
-    return [fetchedObjects firstObject];
 }
 
 #pragma mark - SPSessionDelegate Methods
@@ -255,7 +162,7 @@
 
 - (void)sessionDidLoginSuccessfully:(SPSession *)aSession; {
 	// Invoked by SPSession after a successful login.
-    [self fetchPlaylists];
+    [self fetchPlaylists:nil];
 }
 
 - (void)session:(SPSession *)aSession didFailToLoginWithError:(NSError *)error; {
@@ -288,6 +195,17 @@
 										  cancelButtonTitle:@"OK"
 										  otherButtonTitles:nil];
 	[alert show];
+}
+
+#pragma mark - Playback
+- (void)playTrackWithURL:(NSURL *)trackURL {
+    [SPTrack trackForTrackURL:trackURL inSession:[SPSession sharedSession] callback:^(SPTrack *track) {
+        [self.playbackManager playTrack:track callback:nil];
+    }];
+}
+
+- (void)playTrack:(SPTrack *)track {
+    [self.playbackManager playTrack:track callback:nil];
 }
 
 @end

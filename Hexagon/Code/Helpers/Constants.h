@@ -10,5 +10,7 @@
 #define Hexagon_Constants_h
 
 static const float kMenuZoom = 0.85;
+static NSString * const kPlaylistsLoadedNotification = @"kPlaylistsLoadedNotification";
+static NSString * const kPlaylistTracksLoadedNotification = @"kPlaylistTracksLoadedNotification";
 
 #endif

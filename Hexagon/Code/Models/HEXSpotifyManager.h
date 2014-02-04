@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CocoaLibSpotify/CocoaLibSpotify.h>
 
-@interface HEXSpotifyManager : NSObject <SPSessionDelegate>
+@interface HEXSpotifyManager : NSObject <SPSessionDelegate, SPPlaybackManagerDelegate>
 
 @property (nonatomic, strong) NSArray *userPlaylists;
 
@@ -42,5 +42,9 @@
  Log the user out.
  */
 - (void)logOut;
+
+- (void)playTrackWithURL:(NSURL *)trackURL;
+
+- (void)playTrack:(SPTrack *)track;
 
 @end

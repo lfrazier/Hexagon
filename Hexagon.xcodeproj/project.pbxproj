@@ -37,8 +37,6 @@
 		89AC0404189E08BD00B71F89 /* HEXRoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AC0402189E08BD00B71F89 /* HEXRoomsViewController.m */; };
 		89AC0405189E08BD00B71F89 /* HEXRoomsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89AC0403189E08BD00B71F89 /* HEXRoomsViewController.xib */; };
 		89B77451189EC0F80045CBC4 /* HEXSpotifyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B77450189EC0F80045CBC4 /* HEXSpotifyManager.m */; };
-		89B7745A18A091E10045CBC4 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7745918A091E10045CBC4 /* Playlist.m */; };
-		89B7745F18A09A180045CBC4 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7745E18A09A180045CBC4 /* Track.m */; };
 		89B7746318A09D7C0045CBC4 /* HEXPlaylistDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7746118A09D7C0045CBC4 /* HEXPlaylistDetailViewController.m */; };
 		89B7746418A09D7C0045CBC4 /* HEXPlaylistDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B7746218A09D7C0045CBC4 /* HEXPlaylistDetailViewController.xib */; };
 		AA2A59A7A9CD4BC7840955C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC44CDA0E8C4C45B82441EE /* libPods.a */; };
@@ -99,10 +97,6 @@
 		89B7744F189EC0F80045CBC4 /* HEXSpotifyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXSpotifyManager.h; sourceTree = "<group>"; };
 		89B77450189EC0F80045CBC4 /* HEXSpotifyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXSpotifyManager.m; sourceTree = "<group>"; };
 		89B77453189EC5460045CBC4 /* appkey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = appkey.c; sourceTree = "<group>"; };
-		89B7745818A091E10045CBC4 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
-		89B7745918A091E10045CBC4 /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
-		89B7745D18A09A180045CBC4 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
-		89B7745E18A09A180045CBC4 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		89B7746018A09D7C0045CBC4 /* HEXPlaylistDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXPlaylistDetailViewController.h; sourceTree = "<group>"; };
 		89B7746118A09D7C0045CBC4 /* HEXPlaylistDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXPlaylistDetailViewController.m; sourceTree = "<group>"; };
 		89B7746218A09D7C0045CBC4 /* HEXPlaylistDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEXPlaylistDetailViewController.xib; sourceTree = "<group>"; };
@@ -351,10 +345,6 @@
 			isa = PBXGroup;
 			children = (
 				89AC03A7189DB85C00B71F89 /* Hexagon.xcdatamodeld */,
-				89B7745818A091E10045CBC4 /* Playlist.h */,
-				89B7745918A091E10045CBC4 /* Playlist.m */,
-				89B7745D18A09A180045CBC4 /* Track.h */,
-				89B7745E18A09A180045CBC4 /* Track.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -505,8 +495,6 @@
 				89AC0404189E08BD00B71F89 /* HEXRoomsViewController.m in Sources */,
 				89AC03DE189DC74C00B71F89 /* HEXPlaylistViewController.m in Sources */,
 				89AC03A9189DB85C00B71F89 /* Hexagon.xcdatamodeld in Sources */,
-				89B7745A18A091E10045CBC4 /* Playlist.m in Sources */,
-				89B7745F18A09A180045CBC4 /* Track.m in Sources */,
 				89B7746318A09D7C0045CBC4 /* HEXPlaylistDetailViewController.m in Sources */,
 				89AC03EA189DCA9C00B71F89 /* HEXMenuViewController.m in Sources */,
 				89AC03DA189DC32E00B71F89 /* HEXAppDelegate.m in Sources */,

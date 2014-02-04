@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Playlist.h"
+#import <CocoaLibSpotify/CocoaLibSpotify.h>
 
-@interface HEXPlaylistDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface HEXPlaylistDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) Playlist *playlist;
+@property (nonatomic, strong) SPPlaylist *playlist;
 
 @end
