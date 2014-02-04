@@ -47,4 +47,8 @@
 
 - (void)playTrack:(SPTrack *)track;
 
+- (void)pauseCurrentTrack;
+
+- (void)seekCurrentTrackToPosition:(NSTimeInterval)position;
+
 @end

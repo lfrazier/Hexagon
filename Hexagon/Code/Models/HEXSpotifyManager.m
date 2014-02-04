@@ -208,4 +208,12 @@
     [self.playbackManager playTrack:track callback:nil];
 }
 
+- (void)pauseCurrentTrack {
+    self.playbackManager.isPlaying = NO;
+}
+
+- (void)seekCurrentTrackToPosition:(NSTimeInterval)position {
+    [self.playbackManager seekToTrackPosition:position];
+}
+
 @end
