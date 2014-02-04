@@ -11,6 +11,7 @@
 @interface HEXInboxViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+// TODO: Sort playlist items by date added
 
 @end
 
@@ -38,7 +39,7 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [SPSession sharedSession].inboxPlaylist.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -60,7 +61,13 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    //cell.textLabel.text = (playlist.name.length) ? playlist.name : playlist.spotifyURL.absoluteString;
+    SPPlaylistItem *playlistItem = [SPSession sharedSession].inboxPlaylist.items[indexPath.row];
+    if ([playlistItem.item isKindOfClass:[SPTrack class]]) {
+        cell.textLabel.text = ((SPTrack *)playlistItem.item).name;
+    } else if ([playlistItem.item isKindOfClass:[SPPlaylist class]]) {
+        cell.textLabel.text = ((SPPlaylist *)playlistItem.item).name;
+    }
+    
 }
 
 #pragma mark - UITableViewDelegate

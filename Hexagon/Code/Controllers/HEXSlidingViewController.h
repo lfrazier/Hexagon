@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CocoaLibSpotify/CocoaLibSpotify.h>
 
 @interface HEXSlidingViewController : UIViewController <UIGestureRecognizerDelegate>
 

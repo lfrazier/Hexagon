@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "HEXSlidingViewController.h"
-#import <CocoaLibSpotify/CocoaLibSpotify.h>
 
 @interface HEXPlaylistViewController : HEXSlidingViewController <UITableViewDataSource, UITableViewDelegate>
 
