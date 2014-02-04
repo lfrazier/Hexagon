@@ -49,7 +49,7 @@ static const int kSettingsIndex = 4;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blurrystars2"]];
+    self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blurrystars"]];
     CGSize imageSize = [UIImage imageNamed:@"blurrystars2"].size;
     [self.backgroundImageView setFrame:CGRectMake(0, 0, imageSize.width, imageSize.height)];
     [self.view addSubview:self.backgroundImageView];

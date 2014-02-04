@@ -11,13 +11,36 @@
 
 @interface HEXSpotifyManager : NSObject <SPSessionDelegate>
 
+@property (nonatomic, strong) NSArray *userPlaylists;
+
+
 + (instancetype)sharedInstance;
 
+/**
+ Set up the Spotify session. Note, this is not the same as logging in.
+ This method only creates the shared session.
+ */
 - (void)setUpSession;
+/**
+ Log the user in. If the credentials exist in NSUserDefaults, an "automatic" login is attempted.
+ If it fails, or no credentials are found, the login UI is displayed.
+ */
 - (void)logIn;
+/**
+ Attempts to log the user in with the saved username and credentials.
+ */
 - (void)attemptLoginWithName:(NSString *)name andCredential:(NSString *)credential;
+/**
+ Displays the standard login UI.
+ */
 - (void)showLoginUI;
-- (void)fetchPlaylists;
+/**
+ Fetches playlists and tracks (for easy preloading).
+ */
+- (void)fetchPlaylists:(void (^)(BOOL success))completion;
+/**
+ Log the user out.
+ */
 - (void)logOut;
 
 @end

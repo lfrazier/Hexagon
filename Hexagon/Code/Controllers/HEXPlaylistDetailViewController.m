@@ -1,26 +1,23 @@
 //
-//  HEXPlaylistViewController.m
+//  HEXPlaylistDetailViewController.m
 //  Hexagon
 //
-//  Created by Lauren on 2/1/14.
+//  Created by Lauren on 2/3/14.
 //  Copyright (c) 2014 Lauren Frazier. All rights reserved.
 //
 
-#import "HEXPlaylistViewController.h"
-#import "Playlist.h"
-#import "HEXAppDelegate.h"
 #import "HEXPlaylistDetailViewController.h"
+#import "HEXAppDelegate.h"
+#import "Track.h"
 
-@interface HEXPlaylistViewController ()
+@interface HEXPlaylistDetailViewController ()
 
 @property (nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
-@implementation HEXPlaylistViewController
-
-@synthesize fetchedResultsController = _fetchedResultsController;
+@implementation HEXPlaylistDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -68,15 +65,13 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Playlist *playlist = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = (playlist.name.length) ? playlist.name : playlist.spotifyURL;
+    Track *track = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = (track.name.length) ? track.name : track.spotifyURL;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HEXPlaylistDetailViewController *detailVC = [[HEXPlaylistDetailViewController alloc] initWithNibName:NSStringFromClass([HEXPlaylistDetailViewController class]) bundle:nil];
-    detailVC.playlist = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [self.navigationController pushViewController:detailVC animated:YES];
+    
 }
 
 #pragma mark - NSFetchedResultsController
@@ -90,8 +85,11 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:NSStringFromClass([Playlist class]) inManagedObjectContext:managedObjectContext];
+                                   entityForName:NSStringFromClass([Track class]) inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY playlists.spotifyURL == %@", self.playlist.spotifyURL];
+    [fetchRequest setPredicate:predicate];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
                               initWithKey:@"userOrder" ascending:YES];

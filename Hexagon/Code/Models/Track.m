@@ -1,21 +1,21 @@
 //
-//  Playlist.m
+//  Track.m
 //  Hexagon
 //
 //  Created by Lauren on 2/3/14.
 //  Copyright (c) 2014 Lauren Frazier. All rights reserved.
 //
 
+#import "Track.h"
 #import "Playlist.h"
 
 
-@implementation Playlist
+@implementation Track
 
 @dynamic spotifyURL;
 @dynamic name;
-@dynamic playlistDescription;
+@dynamic duration;
 @dynamic userOrder;
-@dynamic user;
-@dynamic tracks;
+@dynamic playlists;
 
 @end

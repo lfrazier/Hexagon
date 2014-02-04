@@ -2,7 +2,7 @@
 //  Playlist.h
 //  Hexagon
 //
-//  Created by Lauren on 2/2/14.
+//  Created by Lauren on 2/3/14.
 //  Copyright (c) 2014 Lauren Frazier. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NSString * spotifyURL;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * playlistDescription;
+@property (nonatomic, retain) NSNumber * userOrder;
 @property (nonatomic, retain) NSManagedObject *user;
 @property (nonatomic, retain) NSSet *tracks;
 @end
