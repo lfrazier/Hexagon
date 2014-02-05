@@ -37,6 +37,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+  self.title = self.playlist.name;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

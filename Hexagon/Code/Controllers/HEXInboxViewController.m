@@ -7,11 +7,13 @@
 //
 
 #import "HEXInboxViewController.h"
+#import "HEXPlaylistDetailViewController.h"
+#import "HEXSongPlaybackViewController.h"
 
 @interface HEXInboxViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-// TODO: Sort playlist items by date added
+@property (nonatomic, strong) NSArray *inboxItems;
 
 @end
 
@@ -33,13 +35,19 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [self refreshTableView];
+}
+
 - (void)refreshTableView {
+  self.inboxItems = [[SPSession sharedSession].inboxPlaylist.items sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"dateAdded" ascending:NO]]];
     [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [SPSession sharedSession].inboxPlaylist.items.count;
+    return self.inboxItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -61,20 +69,27 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    SPPlaylistItem *playlistItem = [SPSession sharedSession].inboxPlaylist.items[indexPath.row];
+    SPPlaylistItem *playlistItem = self.inboxItems[indexPath.row];
     if ([playlistItem.item isKindOfClass:[SPTrack class]]) {
         cell.textLabel.text = ((SPTrack *)playlistItem.item).name;
     } else if ([playlistItem.item isKindOfClass:[SPPlaylist class]]) {
-        cell.textLabel.text = ((SPPlaylist *)playlistItem.item).name;
+        cell.textLabel.text = [@"PLAYLIST: " stringByAppendingString:((SPPlaylist *)playlistItem.item).name];
     }
     
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    HEXPlaylistDetailViewController *detailVC = [[HEXPlaylistDetailViewController alloc] initWithNibName:NSStringFromClass([HEXPlaylistDetailViewController class]) bundle:nil];
-//    detailVC.playlist = [SPSession sharedSession].userPlaylists.flattenedPlaylists[indexPath.row];
-//    [self.navigationController pushViewController:detailVC animated:YES];
+  SPPlaylistItem *playlistItem = self.inboxItems[indexPath.row];
+  if ([playlistItem.item isKindOfClass:[SPTrack class]]) {
+    HEXSongPlaybackViewController *playbackController = [[HEXSongPlaybackViewController alloc] initWithNibName:NSStringFromClass([HEXSongPlaybackViewController class]) bundle:nil];
+    playbackController.track = (SPTrack *)playlistItem.item;
+    [self.navigationController pushViewController:playbackController animated:YES];
+  } else if ([playlistItem.item isKindOfClass:[SPPlaylist class]]) {
+    HEXPlaylistDetailViewController *detailVC = [[HEXPlaylistDetailViewController alloc] initWithNibName:NSStringFromClass([HEXPlaylistDetailViewController class]) bundle:nil];
+    detailVC.playlist = (SPPlaylist *)playlistItem.item;
+    [self.navigationController pushViewController:detailVC animated:YES];
+  }
 }
 
 #pragma mark - Cleanup
