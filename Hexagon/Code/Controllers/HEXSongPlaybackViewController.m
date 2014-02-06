@@ -8,6 +8,7 @@
 
 #import "HEXSongPlaybackViewController.h"
 #import "HEXSpotifyManager.h"
+#import "HEXPlaybackManager.h"
 
 @interface HEXSongPlaybackViewController ()
 
@@ -28,22 +29,29 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [[HEXSpotifyManager sharedInstance] playTrack:self.track];
+    //[[HEXPlaybackManager sharedInstance] playTrack:self.track callback:nil];
 }
 
 - (IBAction)playingSwitchTapped:(id)sender {
-    if (((UISwitch *)sender).isOn) {
-        [[HEXSpotifyManager sharedInstance] resumeCurrentTrack];
-    } else {
-        [[HEXSpotifyManager sharedInstance] pauseCurrentTrack];
-    }
+    [HEXPlaybackManager sharedInstance].isPlaying = ((UISwitch *)sender).isOn;
 }
 
 - (IBAction)positionSliderMoved:(id)sender {
     NSTimeInterval newPosition = ((UISlider *)sender).value * self.track.duration;
-    [[HEXSpotifyManager sharedInstance] seekCurrentTrackToPosition:newPosition];
+    [[HEXPlaybackManager sharedInstance] seekToTrackPosition:newPosition];
 }
 
+- (IBAction)prevTapped:(id)sender {
+    [[HEXPlaybackManager sharedInstance] playPreviousTrackWithCallback:nil];
+}
+
+- (IBAction)nextTapped:(id)sender {
+    [[HEXPlaybackManager sharedInstance] playNextTrackWithCallback:nil];
+}
+
+- (IBAction)volumeSliderMoved:(id)sender {
+    [HEXPlaybackManager sharedInstance].volume = ((UISlider *)sender).value;
+}
 
 - (void)didReceiveMemoryWarning
 {

@@ -43,6 +43,7 @@
 		89B7746A18A0C47F0045CBC4 /* HEXSongPlaybackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B7746818A0C47F0045CBC4 /* HEXSongPlaybackViewController.xib */; };
 		89B7746E18A131CA0045CBC4 /* HEXInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7746C18A131CA0045CBC4 /* HEXInboxViewController.m */; };
 		89B7746F18A131CA0045CBC4 /* HEXInboxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B7746D18A131CA0045CBC4 /* HEXInboxViewController.xib */; };
+		89B7747318A3207A0045CBC4 /* HEXPlaybackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7747218A3207A0045CBC4 /* HEXPlaybackManager.m */; };
 		AA2A59A7A9CD4BC7840955C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC44CDA0E8C4C45B82441EE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,8 @@
 		89B7746B18A131CA0045CBC4 /* HEXInboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXInboxViewController.h; sourceTree = "<group>"; };
 		89B7746C18A131CA0045CBC4 /* HEXInboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXInboxViewController.m; sourceTree = "<group>"; };
 		89B7746D18A131CA0045CBC4 /* HEXInboxViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEXInboxViewController.xib; sourceTree = "<group>"; };
+		89B7747118A3207A0045CBC4 /* HEXPlaybackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXPlaybackManager.h; sourceTree = "<group>"; };
+		89B7747218A3207A0045CBC4 /* HEXPlaybackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXPlaybackManager.m; sourceTree = "<group>"; };
 		9AC44CDA0E8C4C45B82441EE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -258,7 +261,7 @@
 			children = (
 				89B7745C18A092000045CBC4 /* Core Data */,
 				89B77453189EC5460045CBC4 /* appkey.c */,
-				89B7745B18A091EF0045CBC4 /* Spotify Manager */,
+				89B7745B18A091EF0045CBC4 /* Spotify */,
 			);
 			name = Models;
 			path = Code/Models;
@@ -344,13 +347,15 @@
 			name = Rooms;
 			sourceTree = "<group>";
 		};
-		89B7745B18A091EF0045CBC4 /* Spotify Manager */ = {
+		89B7745B18A091EF0045CBC4 /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
 				89B7744F189EC0F80045CBC4 /* HEXSpotifyManager.h */,
 				89B77450189EC0F80045CBC4 /* HEXSpotifyManager.m */,
+				89B7747118A3207A0045CBC4 /* HEXPlaybackManager.h */,
+				89B7747218A3207A0045CBC4 /* HEXPlaybackManager.m */,
 			);
-			name = "Spotify Manager";
+			name = Spotify;
 			sourceTree = "<group>";
 		};
 		89B7745C18A092000045CBC4 /* Core Data */ = {
@@ -530,6 +535,7 @@
 				89AC0404189E08BD00B71F89 /* HEXRoomsViewController.m in Sources */,
 				89AC03DE189DC74C00B71F89 /* HEXPlaylistViewController.m in Sources */,
 				89AC03A9189DB85C00B71F89 /* Hexagon.xcdatamodeld in Sources */,
+				89B7747318A3207A0045CBC4 /* HEXPlaybackManager.m in Sources */,
 				89B7746318A09D7C0045CBC4 /* HEXPlaylistDetailViewController.m in Sources */,
 				89B7746E18A131CA0045CBC4 /* HEXInboxViewController.m in Sources */,
 				89AC03EA189DCA9C00B71F89 /* HEXMenuViewController.m in Sources */,

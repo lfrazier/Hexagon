@@ -197,31 +197,4 @@
 	[alert show];
 }
 
-#pragma mark - Playback
-- (void)playTrackWithURL:(NSURL *)trackURL {
-    [SPTrack trackForTrackURL:trackURL inSession:[SPSession sharedSession] callback:^(SPTrack *track) {
-        [self.playbackManager playTrack:track callback:nil];
-    }];
-}
-
-- (void)playTrack:(SPTrack *)track {
-    [self.playbackManager playTrack:track callback:nil];
-}
-
-- (void)pauseCurrentTrack {
-    self.playbackManager.isPlaying = NO;
-}
-
-- (void)resumeCurrentTrack {
-    self.playbackManager.isPlaying = YES;
-}
-
-- (void)seekCurrentTrackToPosition:(NSTimeInterval)position {
-    [self.playbackManager seekToTrackPosition:position];
-}
-
-- (void)playbackManagerWillStartPlayingAudio:(SPPlaybackManager *)aPlaybackManager {
-    
-}
-
 @end

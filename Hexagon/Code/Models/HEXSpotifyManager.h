@@ -43,14 +43,4 @@
  */
 - (void)logOut;
 
-- (void)playTrackWithURL:(NSURL *)trackURL;
-
-- (void)playTrack:(SPTrack *)track;
-
-- (void)pauseCurrentTrack;
-
-- (void)resumeCurrentTrack;
-
-- (void)seekCurrentTrackToPosition:(NSTimeInterval)position;
-
 @end

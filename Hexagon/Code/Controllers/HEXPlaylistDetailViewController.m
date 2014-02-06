@@ -10,6 +10,7 @@
 #import "HEXAppDelegate.h"
 #import "HEXSpotifyManager.h"
 #import "HEXSongPlaybackViewController.h"
+#import "HEXPlaybackManager.h"
 
 @interface HEXPlaylistDetailViewController ()
 
@@ -89,6 +90,7 @@
     SPTrack *track = self.tracks[indexPath.row];
     HEXSongPlaybackViewController *playbackController = [[HEXSongPlaybackViewController alloc] initWithNibName:NSStringFromClass([HEXSongPlaybackViewController class]) bundle:nil];
     playbackController.track = track;
+    [[HEXPlaybackManager sharedInstance] playTrackAtIndex:indexPath.row fromPlaylist:self.playlist shuffle:NO repeat:NO callback:nil];
     [self.navigationController pushViewController:playbackController animated:YES];
 }
 

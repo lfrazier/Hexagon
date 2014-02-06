@@ -9,6 +9,7 @@
 #import "HEXPlaylistViewController.h"
 #import "HEXPlaylistDetailViewController.h"
 #import "HEXSpotifyManager.h"
+#import "HEXPlaybackManager.h"
 
 @interface HEXPlaylistViewController ()
 
