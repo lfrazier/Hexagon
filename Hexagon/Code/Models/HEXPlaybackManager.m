@@ -119,7 +119,7 @@
     self.repeatPlaylist = repeat;
     self.currentPlaylist = playlist;
     if (shuffle) {
-        [self.playlistTracks exchangeObjectAtIndex:[playlist.items indexOfObject:originalItem] withObjectAtIndex:0];
+        [self.playlistTracks exchangeObjectAtIndex:[self.playlistTracks indexOfObject:originalItem] withObjectAtIndex:0];
         self.currentSongIndex = 0;
     } else {
         self.currentSongIndex = index;
