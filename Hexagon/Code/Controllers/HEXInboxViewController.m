@@ -9,6 +9,7 @@
 #import "HEXInboxViewController.h"
 #import "HEXPlaylistDetailViewController.h"
 #import "HEXSongPlaybackViewController.h"
+#import "HEXPlaybackManager.h"
 
 @interface HEXInboxViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -84,6 +85,7 @@
   if ([playlistItem.item isKindOfClass:[SPTrack class]]) {
     HEXSongPlaybackViewController *playbackController = [[HEXSongPlaybackViewController alloc] initWithNibName:NSStringFromClass([HEXSongPlaybackViewController class]) bundle:nil];
     playbackController.track = (SPTrack *)playlistItem.item;
+      [[HEXPlaybackManager sharedInstance] playTrackAtIndex:indexPath.row fromPlaylist:[SPSession sharedSession].inboxPlaylist shuffle:NO repeat:NO callback:nil];
     [self.navigationController pushViewController:playbackController animated:YES];
   } else if ([playlistItem.item isKindOfClass:[SPPlaylist class]]) {
     HEXPlaylistDetailViewController *detailVC = [[HEXPlaylistDetailViewController alloc] initWithNibName:NSStringFromClass([HEXPlaylistDetailViewController class]) bundle:nil];

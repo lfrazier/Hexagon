@@ -69,6 +69,7 @@
         if (self.repeatPlaylist) {
             self.currentSongIndex = 0;
         } else {
+            // TODO: Set currentPlaylist to nil?
             return;
         }
     }
@@ -131,6 +132,13 @@
                 block(error);
             }
         }];
+    }
+}
+
+- (void)sessionDidEndPlayback:(id<SPSessionPlaybackProvider>)aSession {
+    [super sessionDidEndPlayback:aSession];
+    if (self.currentPlaylist) {
+        [self playNextTrackWithCallback:nil];
     }
 }
 

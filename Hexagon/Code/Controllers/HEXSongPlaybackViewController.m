@@ -37,7 +37,7 @@
 }
 
 - (IBAction)positionSliderMoved:(id)sender {
-    NSTimeInterval newPosition = ((UISlider *)sender).value * self.track.duration;
+    NSTimeInterval newPosition = ((UISlider *)sender).value * [HEXPlaybackManager sharedInstance].currentTrack.duration;
     [[HEXPlaybackManager sharedInstance] seekToTrackPosition:newPosition];
 }
 
