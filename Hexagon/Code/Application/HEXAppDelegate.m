@@ -37,6 +37,8 @@
     self.sideMenuViewController.shadowColor = [UIColor blackColor];
     // zoom scale
     self.sideMenuViewController.zoomScale = kMenuZoom;
+    // zoom speed
+    self.sideMenuViewController.animationDuration = 0.2;
     // fade the new view in, rather than sliding it
     self.sideMenuViewController.animationType = TWTSideMenuAnimationTypeFadeIn;
     // set the side menu controller as the root view controller

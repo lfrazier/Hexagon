@@ -48,17 +48,48 @@ static NSString *MenuCellIdentifier = @"MenuCellIdentifier";
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blurrystars"]];
-    CGSize imageSize = [UIImage imageNamed:@"blurrystars2"].size;
-    [self.backgroundImageView setFrame:CGRectMake(0, 0, imageSize.width, imageSize.height)];
-    [self.view addSubview:self.backgroundImageView];
-    [self.view sendSubviewToBack:self.backgroundImageView];
+    [self setUpBackground];
     
     self.gestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(closeSideMenu)];
     self.gestureRecognizer.edges = UIRectEdgeRight;
     [self.view addGestureRecognizer:self.gestureRecognizer];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MenuCellIdentifier];
+}
+
+- (void)setUpBackground {
+    self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stars"]];
+    CGSize imageSize = [UIImage imageNamed:@"stars"].size;
+    
+    // Adjust initial position to account for parallax
+    int maxVerticalDistance = 10;
+    int maxHorizontalDistance = 10;
+    [self.backgroundImageView setFrame:CGRectMake(-1 * maxHorizontalDistance, -1 * maxVerticalDistance, imageSize.width, imageSize.height)];
+    [self.view addSubview:self.backgroundImageView];
+    [self.view sendSubviewToBack:self.backgroundImageView];
+
+    // Set vertical effect
+    UIInterpolatingMotionEffect *verticalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.y"
+     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    verticalMotionEffect.minimumRelativeValue = @(-1 * maxVerticalDistance);
+    verticalMotionEffect.maximumRelativeValue = @(maxVerticalDistance);
+    
+    // Set horizontal effect
+    UIInterpolatingMotionEffect *horizontalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-1 * maxHorizontalDistance);
+    horizontalMotionEffect.maximumRelativeValue = @(maxHorizontalDistance);
+    
+    // Create group to combine both
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    // Add both effects to your view
+    [self.backgroundImageView addMotionEffect:group];
 }
 
 #pragma mark - UITableViewDataSource Methods
