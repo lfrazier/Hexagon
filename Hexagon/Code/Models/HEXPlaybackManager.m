@@ -70,6 +70,8 @@
             self.currentSongIndex = 0;
         } else {
             // TODO: Set currentPlaylist to nil?
+            // Put the index back where it was and return.
+            self.currentSongIndex--;
             return;
         }
     }
@@ -95,6 +97,8 @@
         if (self.repeatPlaylist) {
             self.currentSongIndex = self.playlistTracks.count - 1;
         } else {
+            // Put the index back to where it was and return.
+            self.currentSongIndex++;
             return;
         }
     }
