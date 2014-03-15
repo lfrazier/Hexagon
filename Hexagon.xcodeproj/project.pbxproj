@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8914A14018D4A4FE0009885E /* HEXSwipeableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914A13F18D4A4FE0009885E /* HEXSwipeableTableViewCell.m */; };
+		8914A14318D4AD450009885E /* NSMutableArray+HEXUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914A14218D4AD450009885E /* NSMutableArray+HEXUtilityButtons.m */; };
 		89AC0394189DB85C00B71F89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AC0393189DB85C00B71F89 /* Foundation.framework */; };
 		89AC0396189DB85C00B71F89 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AC0395189DB85C00B71F89 /* CoreGraphics.framework */; };
 		89AC0398189DB85C00B71F89 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AC0397189DB85C00B71F89 /* UIKit.framework */; };
 		89AC039A189DB85C00B71F89 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AC0399189DB85C00B71F89 /* CoreData.framework */; };
 		89AC03A0189DB85C00B71F89 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89AC039E189DB85C00B71F89 /* InfoPlist.strings */; };
 		89AC03A2189DB85C00B71F89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AC03A1189DB85C00B71F89 /* main.m */; };
-		89AC03A9189DB85C00B71F89 /* Hexagon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89AC03A7189DB85C00B71F89 /* Hexagon.xcdatamodeld */; };
 		89AC03AB189DB85C00B71F89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89AC03AA189DB85C00B71F89 /* Images.xcassets */; };
 		89AC03B2189DB85D00B71F89 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AC03B1189DB85D00B71F89 /* XCTest.framework */; };
 		89AC03B3189DB85D00B71F89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AC0393189DB85C00B71F89 /* Foundation.framework */; };
@@ -59,6 +60,10 @@
 
 /* Begin PBXFileReference section */
 		7812DECFBAA24DF48591D6CC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		8914A13E18D4A4FE0009885E /* HEXSwipeableTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXSwipeableTableViewCell.h; sourceTree = "<group>"; };
+		8914A13F18D4A4FE0009885E /* HEXSwipeableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXSwipeableTableViewCell.m; sourceTree = "<group>"; };
+		8914A14118D4AD450009885E /* NSMutableArray+HEXUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+HEXUtilityButtons.h"; sourceTree = "<group>"; };
+		8914A14218D4AD450009885E /* NSMutableArray+HEXUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+HEXUtilityButtons.m"; sourceTree = "<group>"; };
 		89AC0390189DB85C00B71F89 /* Hexagon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hexagon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89AC0393189DB85C00B71F89 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89AC0395189DB85C00B71F89 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -68,7 +73,6 @@
 		89AC039F189DB85C00B71F89 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89AC03A1189DB85C00B71F89 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		89AC03A3189DB85C00B71F89 /* Hexagon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hexagon-Prefix.pch"; sourceTree = "<group>"; };
-		89AC03A8189DB85C00B71F89 /* Hexagon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hexagon.xcdatamodel; sourceTree = "<group>"; };
 		89AC03AA189DB85C00B71F89 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		89AC03B0189DB85D00B71F89 /* HexagonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HexagonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89AC03B1189DB85D00B71F89 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -251,6 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				89AC03ED189DCE2A00B71F89 /* Constants.h */,
+				8914A14118D4AD450009885E /* NSMutableArray+HEXUtilityButtons.h */,
+				8914A14218D4AD450009885E /* NSMutableArray+HEXUtilityButtons.m */,
 			);
 			name = Helpers;
 			path = Code/Helpers;
@@ -259,7 +265,6 @@
 		89AC03D8189DC32E00B71F89 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				89B7745C18A092000045CBC4 /* Core Data */,
 				89B77453189EC5460045CBC4 /* appkey.c */,
 				89B7745B18A091EF0045CBC4 /* Spotify */,
 			);
@@ -270,6 +275,8 @@
 		89AC03D9189DC32E00B71F89 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8914A13E18D4A4FE0009885E /* HEXSwipeableTableViewCell.h */,
+				8914A13F18D4A4FE0009885E /* HEXSwipeableTableViewCell.m */,
 			);
 			name = Views;
 			path = Code/Views;
@@ -356,14 +363,6 @@
 				89B7747218A3207A0045CBC4 /* HEXPlaybackManager.m */,
 			);
 			name = Spotify;
-			sourceTree = "<group>";
-		};
-		89B7745C18A092000045CBC4 /* Core Data */ = {
-			isa = PBXGroup;
-			children = (
-				89AC03A7189DB85C00B71F89 /* Hexagon.xcdatamodeld */,
-			);
-			name = "Core Data";
 			sourceTree = "<group>";
 		};
 		89B7746518A0C45E0045CBC4 /* Music Playback */ = {
@@ -532,18 +531,19 @@
 			files = (
 				89AC03FD189E060000B71F89 /* HEXSettingsViewController.m in Sources */,
 				89B77451189EC0F80045CBC4 /* HEXSpotifyManager.m in Sources */,
+				8914A14318D4AD450009885E /* NSMutableArray+HEXUtilityButtons.m in Sources */,
 				89AC03E4189DC92D00B71F89 /* HEXProfileViewController.m in Sources */,
 				89AC03F0189DD32300B71F89 /* HEXSlidingViewController.m in Sources */,
 				89B7746918A0C47F0045CBC4 /* HEXSongPlaybackViewController.m in Sources */,
 				89AC0404189E08BD00B71F89 /* HEXRoomsViewController.m in Sources */,
 				89AC03DE189DC74C00B71F89 /* HEXPlaylistViewController.m in Sources */,
-				89AC03A9189DB85C00B71F89 /* Hexagon.xcdatamodeld in Sources */,
 				89B7747318A3207A0045CBC4 /* HEXPlaybackManager.m in Sources */,
 				89B7746318A09D7C0045CBC4 /* HEXPlaylistDetailViewController.m in Sources */,
 				89B7746E18A131CA0045CBC4 /* HEXInboxViewController.m in Sources */,
 				89AC03EA189DCA9C00B71F89 /* HEXMenuViewController.m in Sources */,
 				89AC03DA189DC32E00B71F89 /* HEXAppDelegate.m in Sources */,
 				89AC03F7189E05D200B71F89 /* HEXSearchViewController.m in Sources */,
+				8914A14018D4A4FE0009885E /* HEXSwipeableTableViewCell.m in Sources */,
 				89AC03A2189DB85C00B71F89 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -767,20 +767,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		89AC03A7189DB85C00B71F89 /* Hexagon.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				89AC03A8189DB85C00B71F89 /* Hexagon.xcdatamodel */,
-			);
-			currentVersion = 89AC03A8189DB85C00B71F89 /* Hexagon.xcdatamodel */;
-			name = Hexagon.xcdatamodeld;
-			path = ../../Hexagon.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 89AC0388189DB85C00B71F89 /* Project object */;
 }

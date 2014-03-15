@@ -7,53 +7,61 @@
 //
 
 #import "HEXPlaylistDetailViewController.h"
+
 #import "HEXAppDelegate.h"
+#import "HEXPlaybackManager.h"
 #import "HEXSpotifyManager.h"
 #import "HEXSongPlaybackViewController.h"
-#import "HEXPlaybackManager.h"
+#import "HEXSwipeableTableViewCell.h"
+#import "NSMutableArray+HEXUtilityButtons.h"
 
-@interface HEXPlaylistDetailViewController ()
+@interface HEXPlaylistDetailViewController () <SWTableViewCellDelegate>
 
 @property (nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *tracks;
 
 @end
 
+typedef NS_ENUM(NSInteger, HEXPlaylistDetailUtilityButton) {
+  HEXPlaylistDetailUtilityButtonStar,
+  HEXPlaylistDetailUtilityButtonAddToPlaylist
+};
+
 @implementation HEXPlaylistDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(refreshTableView)
-                                                     name:kPlaylistTracksLoadedNotification
-                                                   object:nil];
-    }
-    return self;
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) {
+    // Custom initialization
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshTableView)
+                                                 name:kPlaylistTracksLoadedNotification
+                                               object:nil];
+  }
+  return self;
 }
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+  [super viewDidLoad];
+  // Do any additional setup after loading the view from its nib.
   self.title = self.playlist.name;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+  [super viewWillAppear:animated];
 
-    [self refreshTableView];
+  [self refreshTableView];
 }
 
 - (void)refreshTableView {
-    self.tracks = [self tracksFromPlaylist:self.playlist];
-    [self.tableView reloadData];
+  self.tracks = [self tracksFromPlaylist:self.playlist];
+  [self.tableView reloadData];
 }
 
 - (NSArray *)tracksFromPlaylist:(SPPlaylist *)playlist {
-    NSMutableArray *tracks = [NSMutableArray arrayWithCapacity:playlist.items.count];
+  NSMutableArray *tracks = [NSMutableArray arrayWithCapacity:playlist.items.count];
 	for (SPPlaylistItem *anItem in playlist.items) {
 		if (anItem.itemClass == [SPTrack class]) {
 			[tracks addObject:anItem.item];
@@ -64,40 +72,77 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tracks.count;
+  return self.tracks.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] init];
-    }
-                             
-    // Set up the cell...
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
+  static NSString *CellIdentifier = @"PlaylistDetailCell";
+  HEXSwipeableTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+  if (!cell) {
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+
+    [rightUtilityButtons hexInsertUtilityButtonWithColor:[UIColor yellowColor]
+                                                   title:@"Star"
+                                                 atIndex:HEXPlaylistDetailUtilityButtonStar];
+    [rightUtilityButtons hexInsertUtilityButtonWithColor:[UIColor greenColor]
+                                                   title:@"Add"
+                                                 atIndex:HEXPlaylistDetailUtilityButtonAddToPlaylist];
+
+    cell = [[HEXSwipeableTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                            reuseIdentifier:CellIdentifier
+                                        containingTableView:_tableView
+                                         leftUtilityButtons:nil
+                                        rightUtilityButtons:rightUtilityButtons];
+    cell.delegate = self;
+  }
+
+  // Set up the cell...
+  [self configureCell:cell atIndexPath:indexPath];
+  return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    SPTrack *track = self.tracks[indexPath.row];
-    cell.textLabel.text = (track.name.length) ? track.name : track.spotifyURL.absoluteString;
+- (void)configureCell:(HEXSwipeableTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+  SPTrack *track = self.tracks[indexPath.row];
+  cell.textLabel.text = (track.name.length) ? track.name : track.spotifyURL.absoluteString;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    SPTrack *track = self.tracks[indexPath.row];
-    HEXSongPlaybackViewController *playbackController = [[HEXSongPlaybackViewController alloc] initWithNibName:NSStringFromClass([HEXSongPlaybackViewController class]) bundle:nil];
-    playbackController.track = track;
-    [[HEXPlaybackManager sharedInstance] playTrackAtIndex:indexPath.row fromPlaylist:self.playlist shuffle:NO repeat:NO callback:nil];
-    [self.navigationController pushViewController:playbackController animated:YES];
+  SPTrack *track = self.tracks[indexPath.row];
+  HEXSongPlaybackViewController *playbackController = [[HEXSongPlaybackViewController alloc] initWithNibName:NSStringFromClass([HEXSongPlaybackViewController class]) bundle:nil];
+  playbackController.track = track;
+  [[HEXPlaybackManager sharedInstance] playTrackAtIndex:indexPath.row fromPlaylist:self.playlist shuffle:NO repeat:NO callback:nil];
+  [self.navigationController pushViewController:playbackController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - SWTableViewCellDelegate
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
+
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+  NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+  SPTrack *track = self.tracks[cellIndexPath.row];
+
+  switch (index) {
+    case HEXPlaylistDetailUtilityButtonStar:
+      track.starred = !track.starred;
+      break;
+    case HEXPlaylistDetailUtilityButtonAddToPlaylist:
+      break;
+    default:
+      break;
+  }
+
+  [cell hideUtilityButtonsAnimated:YES];
 }
 
 @end

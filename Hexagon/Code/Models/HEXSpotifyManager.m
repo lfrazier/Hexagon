@@ -20,112 +20,105 @@
 @implementation HEXSpotifyManager
 
 + (instancetype)sharedInstance {
-    static dispatch_once_t predicate;
-    static id sharedInstance;
-    dispatch_once(&predicate, ^() {
-        sharedInstance = [[self alloc] init];
-    });
-    return sharedInstance;
-}
-
-- (NSManagedObjectContext *)managedObjectContext {
-    if (!_managedObjectContext) {
-        _managedObjectContext = ((HEXAppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-    }
-    return _managedObjectContext;
+  static dispatch_once_t predicate;
+  static id sharedInstance;
+  dispatch_once(&predicate, ^() {
+    sharedInstance = [[self alloc] init];
+  });
+  return sharedInstance;
 }
 
 - (SPPlaybackManager *)playbackManager {
-    if (!_playbackManager) {
-        _playbackManager = [[SPPlaybackManager alloc] initWithPlaybackSession:[SPSession sharedSession]];
-    }
-    return _playbackManager;
+  if (!_playbackManager) {
+    _playbackManager = [[SPPlaybackManager alloc] initWithPlaybackSession:[SPSession sharedSession]];
+  }
+  return _playbackManager;
 }
 
 #pragma mark - Spotify Login/Logout
 - (void)setUpSession {
-    NSError *error = nil;
+  NSError *error = nil;
 	[SPSession initializeSharedSessionWithApplicationKey:[NSData dataWithBytes:&g_appkey length:g_appkey_size]
-											   userAgent:@"com.spotify.SimplePlayer-iOS"
-										   loadingPolicy:SPAsyncLoadingManual
-												   error:&error];
+                                             userAgent:@"com.spotify.SimplePlayer-iOS"
+                                         loadingPolicy:SPAsyncLoadingManual
+                                                 error:&error];
 	if (error != nil) {
 		NSLog(@"CocoaLibSpotify init failed: %@", error);
 		abort();
 	}
-    [[SPSession sharedSession] setDelegate:self];
+  [[SPSession sharedSession] setDelegate:self];
 }
 
 - (void)logIn {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"MostRecentUser"] != nil) {
-        NSString *name = [defaults objectForKey:@"MostRecentUser"];
-        NSString *credential = [[defaults objectForKey:@"SpotifyUsers"] objectForKey:name];
-        [self attemptLoginWithName:name andCredential:credential];
-    } else {
-        [self performSelector:@selector(showLoginUI) withObject:nil afterDelay:0.0];
-    }
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  if ([defaults objectForKey:@"MostRecentUser"] != nil) {
+    NSString *name = [defaults objectForKey:@"MostRecentUser"];
+    NSString *credential = [[defaults objectForKey:@"SpotifyUsers"] objectForKey:name];
+    [self attemptLoginWithName:name andCredential:credential];
+  } else {
+    [self performSelector:@selector(showLoginUI) withObject:nil afterDelay:0.0];
+  }
 }
 
 - (void)attemptLoginWithName:(NSString *)name andCredential:(NSString *)credential {
-    [[SPSession sharedSession] attemptLoginWithUserName:name existingCredential:credential];
+  [[SPSession sharedSession] attemptLoginWithUserName:name existingCredential:credential];
 }
 
 - (void)showLoginUI {
-    
+
 	SPLoginViewController *controller = [SPLoginViewController loginControllerForSession:[SPSession sharedSession]];
 	controller.allowsCancel = NO;
-	
+
 	[((HEXAppDelegate *)[UIApplication sharedApplication].delegate).mainViewController presentViewController:controller animated:NO completion:nil];
-    
+
 }
 
 - (void)logOut {
-    [[SPSession sharedSession] logout:^{
-        [self showLoginUI];
-    }];
+  [[SPSession sharedSession] logout:^{
+    [self showLoginUI];
+  }];
 }
 
 #pragma mark - Spotify Data
 #pragma mark Fetch from server
 - (void)fetchPlaylists:(void (^)(BOOL success))completion {
 	[SPAsyncLoading waitUntilLoaded:[SPSession sharedSession] timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedession, NSArray *notLoadedSession) {
-		
+
 		// The session is logged in and loaded — now wait for the userPlaylists to load.
 		NSLog(@"[%@ %@]: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), @"Session loaded.");
-		
+
 		[SPAsyncLoading waitUntilLoaded:[SPSession sharedSession].userPlaylists timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedContainers, NSArray *notLoadedContainers) {
-			
+
 			// User playlists are loaded — wait for playlists to load their metadata.
 			NSLog(@"[%@ %@]: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), @"Container loaded.");
-			         
+
 			NSMutableArray *playlists = [NSMutableArray array];
 			[playlists addObject:[SPSession sharedSession].starredPlaylist];
 			[playlists addObject:[SPSession sharedSession].inboxPlaylist];
 			[playlists addObjectsFromArray:[SPSession sharedSession].userPlaylists.flattenedPlaylists];
-			
+
 			[SPAsyncLoading waitUntilLoaded:playlists timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedPlaylists, NSArray *notLoadedPlaylists) {
-				
+
 				// All of our playlists have loaded their metadata — wait for all tracks to load their metadata.
 				NSLog(@"[%@ %@]: %@ of %@ playlists loaded.", NSStringFromClass([self class]), NSStringFromSelector(_cmd),
-					  [NSNumber numberWithInteger:loadedPlaylists.count], [NSNumber numberWithInteger:loadedPlaylists.count + notLoadedPlaylists.count]);
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:kPlaylistsLoadedNotification object:self];
-                
+              [NSNumber numberWithInteger:loadedPlaylists.count], [NSNumber numberWithInteger:loadedPlaylists.count + notLoadedPlaylists.count]);
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPlaylistsLoadedNotification object:self];
+
 				NSArray *playlistItems = [loadedPlaylists valueForKeyPath:@"@unionOfArrays.items"];
 				NSArray *tracks = [self tracksFromPlaylistItems:playlistItems];
-				
+
 				[SPAsyncLoading waitUntilLoaded:tracks timeout:kSPAsyncLoadingDefaultTimeout then:^(NSArray *loadedTracks, NSArray *notLoadedTracks) {
-					
+
 					// All of our tracks have loaded their metadata. Hooray!
 					NSLog(@"[%@ %@]: %@ of %@ tracks loaded.", NSStringFromClass([self class]), NSStringFromSelector(_cmd),
-						  [NSNumber numberWithInteger:loadedTracks.count], [NSNumber numberWithInteger:loadedTracks.count + notLoadedTracks.count]);
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kPlaylistTracksLoadedNotification object:self];
+                [NSNumber numberWithInteger:loadedTracks.count], [NSNumber numberWithInteger:loadedTracks.count + notLoadedTracks.count]);
+          [[NSNotificationCenter defaultCenter] postNotificationName:kPlaylistTracksLoadedNotification object:self];
 
-                    if (completion) {
-                        completion(YES);
-                    }
-                }];
+          if (completion) {
+            completion(YES);
+          }
+        }];
 			}];
 		}];
 	}];
@@ -143,17 +136,17 @@
 
 #pragma mark - SPSessionDelegate Methods
 - (void)session:(SPSession *)aSession didGenerateLoginCredentials:(NSString *)credential forUserName:(NSString *)userName {
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *storedCredentials = [[defaults objectForKey:@"SpotifyUsers"] mutableCopy];
-    
-    if (storedCredentials == nil)
-        storedCredentials = [NSMutableDictionary dictionary];
-    
-    [storedCredentials setValue:credential forKey:userName];
-    [defaults setObject:storedCredentials forKey:@"SpotifyUsers"];
-    
-    [defaults setObject:userName forKey:@"MostRecentUser"];
+
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSMutableDictionary *storedCredentials = [[defaults objectForKey:@"SpotifyUsers"] mutableCopy];
+
+  if (storedCredentials == nil)
+    storedCredentials = [NSMutableDictionary dictionary];
+
+  [storedCredentials setValue:credential forKey:userName];
+  [defaults setObject:storedCredentials forKey:@"SpotifyUsers"];
+
+  [defaults setObject:userName forKey:@"MostRecentUser"];
 }
 
 - (UIViewController *)viewControllerToPresentLoginViewForSession:(SPSession *)aSession {
@@ -162,25 +155,25 @@
 
 - (void)sessionDidLoginSuccessfully:(SPSession *)aSession; {
 	// Invoked by SPSession after a successful login.
-    [self fetchPlaylists:nil];
+  [self fetchPlaylists:nil];
 }
 
 - (void)session:(SPSession *)aSession didFailToLoginWithError:(NSError *)error; {
 	// Invoked by SPSession after a failed login.
-    [self showLoginUI];
+  [self showLoginUI];
 }
 
 - (void)sessionDidLogOut:(SPSession *)aSession {
-	
+
 	SPLoginViewController *controller = [SPLoginViewController loginControllerForSession:[SPSession sharedSession]];
-	
+
 	if (((HEXAppDelegate *)[UIApplication sharedApplication].delegate).mainViewController.presentedViewController != nil) return;
-	
+
 	controller.allowsCancel = NO;
-	
+
 	[((HEXAppDelegate *)[UIApplication sharedApplication].delegate).mainViewController presentViewController:controller
-                                          animated:YES
-                                        completion:nil];
+                                                                                                  animated:YES
+                                                                                                completion:nil];
 }
 
 - (void)session:(SPSession *)aSession didEncounterNetworkError:(NSError *)error; {}
@@ -190,10 +183,10 @@
 - (void)session:(SPSession *)aSession recievedMessageForUser:(NSString *)aMessage; {
 	return;
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message from Spotify"
-													message:aMessage
-												   delegate:nil
-										  cancelButtonTitle:@"OK"
-										  otherButtonTitles:nil];
+                                                  message:aMessage
+                                                 delegate:nil
+                                        cancelButtonTitle:@"OK"
+                                        otherButtonTitles:nil];
 	[alert show];
 }
 

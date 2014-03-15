@@ -19,6 +19,10 @@
 
 - (void)playNextTrackWithCallback:(SPErrorableOperationCallback)block;
 - (void)playPreviousTrackWithCallback:(SPErrorableOperationCallback)block;
-- (void)playTrackAtIndex:(int)index fromPlaylist:(SPPlaylist *)playlist shuffle:(BOOL)shuffle repeat:(BOOL)repeat callback:(SPErrorableOperationCallback)block;
+- (void)playTrackAtIndex:(int)index
+            fromPlaylist:(SPPlaylist *)playlist
+                 shuffle:(BOOL)shuffle
+                  repeat:(BOOL)repeat
+                callback:(SPErrorableOperationCallback)block;
 
 @end
