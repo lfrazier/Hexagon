@@ -161,6 +161,10 @@ typedef NS_ENUM(NSInteger, HEXPlaylistDetailUtilityButton) {
   }
 }
 
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell {
+  return YES;
+}
+
 #pragma mark - Song Actions
 
 - (void)starTrack:(SPTrack *)track {
