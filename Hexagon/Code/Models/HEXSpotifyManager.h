@@ -43,4 +43,9 @@
  */
 - (void)logOut;
 
+/**
+ Return an http:// url with the components of the spotify URL.
+ */
+- (NSURL *)httpURLFromSpotifyURL:(NSURL *)spotifyURL;
+
 @end

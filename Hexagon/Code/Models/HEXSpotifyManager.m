@@ -196,4 +196,16 @@
   
 }
 
+#pragma mark - Utilities
+
+- (NSURL *)httpURLFromSpotifyURL:(NSURL *)spotifyURL {
+  NSArray *urlComponents = [spotifyURL.absoluteString componentsSeparatedByString:@":"];
+  NSURL *httpURL;
+  if (urlComponents.count > 2) {
+    NSString *httpURLString = [NSString stringWithFormat:@"http://open.spotify.com/%@/%@", urlComponents[1], urlComponents[2]];
+    httpURL = [NSURL URLWithString:httpURLString];
+  }
+  return httpURL;
+}
+
 @end

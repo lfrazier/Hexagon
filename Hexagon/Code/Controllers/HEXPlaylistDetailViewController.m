@@ -26,7 +26,8 @@
 typedef NS_ENUM(NSInteger, HEXPlaylistDetailUtilityButton) {
   HEXPlaylistDetailUtilityButtonStar,
   HEXPlaylistDetailUtilityButtonAddToPlaylist,
-  HEXPlaylistDetailUtilityButtonRemoveFromPlaylist
+  HEXPlaylistDetailUtilityButtonRemoveFromPlaylist,
+  HEXPlaylistDetailUtilityButtonShare
 };
 
 @implementation HEXPlaylistDetailViewController
@@ -94,6 +95,9 @@ typedef NS_ENUM(NSInteger, HEXPlaylistDetailUtilityButton) {
     [rightUtilityButtons hexInsertUtilityButtonWithColor:[UIColor redColor]
                                                    title:@"Remove"
                                                  atIndex:HEXPlaylistDetailUtilityButtonRemoveFromPlaylist];
+    [rightUtilityButtons hexInsertUtilityButtonWithColor:[UIColor blueColor]
+                                                   title:@"Share"
+                                                 atIndex:HEXPlaylistDetailUtilityButtonShare];
 
     cell = [[HEXSwipeableTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                             reuseIdentifier:CellIdentifier
@@ -132,19 +136,28 @@ typedef NS_ENUM(NSInteger, HEXPlaylistDetailUtilityButton) {
   SPTrack *track = self.tracks[cellIndexPath.row];
 
   switch (index) {
-    case HEXPlaylistDetailUtilityButtonStar:
+    case HEXPlaylistDetailUtilityButtonStar: {
       [self starTrack:track];
       [cell hideUtilityButtonsAnimated:YES];
       break;
-    case HEXPlaylistDetailUtilityButtonAddToPlaylist:
+    }
+    case HEXPlaylistDetailUtilityButtonAddToPlaylist: {
       [self addTrackToPlaylist:track];
       [cell hideUtilityButtonsAnimated:YES];
       break;
-    case HEXPlaylistDetailUtilityButtonRemoveFromPlaylist:
+    }
+    case HEXPlaylistDetailUtilityButtonRemoveFromPlaylist: {
       [self removeTrackFromPlaylist:track];
       break;
-    default:
+    }
+    case HEXPlaylistDetailUtilityButtonShare: {
+      [self shareTrack:track];
       break;
+    }
+    default: {
+      [cell hideUtilityButtonsAnimated:YES];
+      break;
+    }
   }
 }
 
@@ -174,6 +187,23 @@ typedef NS_ENUM(NSInteger, HEXPlaylistDetailUtilityButton) {
     }
     [self refreshTableView];
   }];
+}
+
+- (void)shareTrack:(SPTrack *)track {
+  NSString *shareText = [NSString stringWithFormat:@"%@ — %@", track.name, track.consolidatedArtists];
+  NSURL *trackURL = [[HEXSpotifyManager sharedInstance] httpURLFromSpotifyURL:track.spotifyURL];
+  NSArray *itemsToShare = @[shareText, trackURL];
+  UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare
+                                                                           applicationActivities:nil];
+  // TODO: Sharing to AirDrop??
+  activityVC.excludedActivityTypes = @[UIActivityTypeAddToReadingList,
+                                       UIActivityTypeAssignToContact,
+                                       UIActivityTypeCopyToPasteboard,
+                                       UIActivityTypePostToFlickr,
+                                       UIActivityTypePostToVimeo,
+                                       UIActivityTypePrint,
+                                       UIActivityTypeSaveToCameraRoll];
+  [self presentViewController:activityVC animated:YES completion:nil];
 }
 
 @end
