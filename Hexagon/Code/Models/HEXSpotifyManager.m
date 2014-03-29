@@ -190,4 +190,10 @@
 	[alert show];
 }
 
+#pragma mark - SPPlaybackManagerDelegate
+
+- (void)playbackManagerWillStartPlayingAudio:(SPPlaybackManager *)aPlaybackManager {
+  
+}
+
 @end

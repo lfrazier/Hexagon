@@ -10,6 +10,7 @@
 
 #import "HEXAppDelegate.h"
 #import "HEXPlaybackManager.h"
+#import "HEXPlaylistViewController.h"
 #import "HEXSpotifyManager.h"
 #import "HEXSongPlaybackViewController.h"
 #import "HEXSwipeableTableViewCell.h"
@@ -24,7 +25,8 @@
 
 typedef NS_ENUM(NSInteger, HEXPlaylistDetailUtilityButton) {
   HEXPlaylistDetailUtilityButtonStar,
-  HEXPlaylistDetailUtilityButtonAddToPlaylist
+  HEXPlaylistDetailUtilityButtonAddToPlaylist,
+  HEXPlaylistDetailUtilityButtonRemoveFromPlaylist
 };
 
 @implementation HEXPlaylistDetailViewController
@@ -89,6 +91,9 @@ typedef NS_ENUM(NSInteger, HEXPlaylistDetailUtilityButton) {
     [rightUtilityButtons hexInsertUtilityButtonWithColor:[UIColor greenColor]
                                                    title:@"Add"
                                                  atIndex:HEXPlaylistDetailUtilityButtonAddToPlaylist];
+    [rightUtilityButtons hexInsertUtilityButtonWithColor:[UIColor redColor]
+                                                   title:@"Remove"
+                                                 atIndex:HEXPlaylistDetailUtilityButtonRemoveFromPlaylist];
 
     cell = [[HEXSwipeableTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                             reuseIdentifier:CellIdentifier
@@ -117,12 +122,6 @@ typedef NS_ENUM(NSInteger, HEXPlaylistDetailUtilityButton) {
   [self.navigationController pushViewController:playbackController animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - SWTableViewCellDelegate
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
 
@@ -134,15 +133,47 @@ typedef NS_ENUM(NSInteger, HEXPlaylistDetailUtilityButton) {
 
   switch (index) {
     case HEXPlaylistDetailUtilityButtonStar:
-      track.starred = !track.starred;
+      [self starTrack:track];
+      [cell hideUtilityButtonsAnimated:YES];
       break;
     case HEXPlaylistDetailUtilityButtonAddToPlaylist:
+      [self addTrackToPlaylist:track];
+      [cell hideUtilityButtonsAnimated:YES];
+      break;
+    case HEXPlaylistDetailUtilityButtonRemoveFromPlaylist:
+      [self removeTrackFromPlaylist:track];
       break;
     default:
       break;
   }
+}
 
-  [cell hideUtilityButtonsAnimated:YES];
+#pragma mark - Song Actions
+
+- (void)starTrack:(SPTrack *)track {
+  track.starred = !track.starred;
+}
+
+- (void)addTrackToPlaylist:(SPTrack *)track {
+  HEXPlaylistViewController *addToPlaylistViewController = [[HEXPlaylistViewController alloc] initWithAddToPlaylistMode:YES
+                                                                                                              withTrack:track];
+  [self.navigationController presentViewController:[[UINavigationController alloc] initWithRootViewController:addToPlaylistViewController]
+                                          animated:YES
+                                        completion:nil];
+}
+
+- (void)removeTrackFromPlaylist:(SPTrack *)track {
+  [self.playlist removeItemAtIndex:[self.tracks indexOfObject:track] callback:^(NSError *error) {
+    if (error) {
+      // TODO: Replace with real error handling
+      [[[UIAlertView alloc] initWithTitle:@"ERROR"
+                                  message:error.localizedDescription
+                                 delegate:nil
+                        cancelButtonTitle:@"OK"
+                        otherButtonTitles:nil] show];
+    }
+    [self refreshTableView];
+  }];
 }
 
 @end

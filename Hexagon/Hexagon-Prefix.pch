@@ -21,3 +21,5 @@
 
 // Constants
 #import "Constants.h"
+#import "HEXAlertView.h"
+#import "HEXCommonStrings.h"

@@ -34,7 +34,7 @@ static NSString *MenuCellIdentifier = @"MenuCellIdentifier";
     // Custom initialization
     self.searchNavController = [[UINavigationController alloc] initWithRootViewController: [[HEXSearchViewController alloc] initWithNibName:NSStringFromClass([HEXSearchViewController class]) bundle:nil]];
     self.roomsNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXRoomsViewController alloc] initWithNibName:NSStringFromClass([HEXRoomsViewController class]) bundle:nil]];
-    self.playlistNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXPlaylistViewController alloc] initWithNibName:NSStringFromClass([HEXPlaylistViewController class]) bundle:nil]];
+    self.playlistNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXPlaylistViewController alloc] initWithAddToPlaylistMode:NO withTrack:nil]];
     self.inboxNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXInboxViewController alloc] initWithNibName:NSStringFromClass([HEXInboxViewController class]) bundle:nil]];
     self.profileNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXProfileViewController alloc] initWithNibName:NSStringFromClass([HEXProfileViewController class]) bundle:nil]];
     self.settingsNavController = [[UINavigationController alloc] initWithRootViewController:[[HEXSettingsViewController alloc] initWithNibName:NSStringFromClass([HEXSettingsViewController class]) bundle:nil]];

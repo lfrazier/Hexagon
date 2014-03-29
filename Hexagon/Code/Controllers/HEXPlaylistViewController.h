@@ -11,4 +11,6 @@
 
 @interface HEXPlaylistViewController : HEXSlidingViewController <UITableViewDataSource, UITableViewDelegate>
 
+- (id)initWithAddToPlaylistMode:(BOOL)addToPlaylistMode withTrack:(SPTrack *)trackToAdd;
+
 @end

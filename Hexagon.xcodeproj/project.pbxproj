@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8914A14018D4A4FE0009885E /* HEXSwipeableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914A13F18D4A4FE0009885E /* HEXSwipeableTableViewCell.m */; };
 		8914A14318D4AD450009885E /* NSMutableArray+HEXUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914A14218D4AD450009885E /* NSMutableArray+HEXUtilityButtons.m */; };
+		8992943718E6312900DF9122 /* HEXCommonStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8992943618E6312900DF9122 /* HEXCommonStrings.m */; };
+		8992943B18E6377B00DF9122 /* HEXAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8992943A18E6377B00DF9122 /* HEXAlertView.m */; };
 		89AC0394189DB85C00B71F89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AC0393189DB85C00B71F89 /* Foundation.framework */; };
 		89AC0396189DB85C00B71F89 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AC0395189DB85C00B71F89 /* CoreGraphics.framework */; };
 		89AC0398189DB85C00B71F89 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89AC0397189DB85C00B71F89 /* UIKit.framework */; };
@@ -64,6 +66,10 @@
 		8914A13F18D4A4FE0009885E /* HEXSwipeableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXSwipeableTableViewCell.m; sourceTree = "<group>"; };
 		8914A14118D4AD450009885E /* NSMutableArray+HEXUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+HEXUtilityButtons.h"; sourceTree = "<group>"; };
 		8914A14218D4AD450009885E /* NSMutableArray+HEXUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+HEXUtilityButtons.m"; sourceTree = "<group>"; };
+		8992943518E6312900DF9122 /* HEXCommonStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXCommonStrings.h; sourceTree = "<group>"; };
+		8992943618E6312900DF9122 /* HEXCommonStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXCommonStrings.m; sourceTree = "<group>"; };
+		8992943918E6377B00DF9122 /* HEXAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEXAlertView.h; sourceTree = "<group>"; };
+		8992943A18E6377B00DF9122 /* HEXAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEXAlertView.m; sourceTree = "<group>"; };
 		89AC0390189DB85C00B71F89 /* Hexagon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hexagon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89AC0393189DB85C00B71F89 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89AC0395189DB85C00B71F89 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -147,6 +153,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8992943818E6375B00DF9122 /* HEXAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				8992943918E6377B00DF9122 /* HEXAlertView.h */,
+				8992943A18E6377B00DF9122 /* HEXAlertView.m */,
+			);
+			name = HEXAlertView;
+			sourceTree = "<group>";
+		};
 		89AC0387189DB85C00B71F89 = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +272,8 @@
 				89AC03ED189DCE2A00B71F89 /* Constants.h */,
 				8914A14118D4AD450009885E /* NSMutableArray+HEXUtilityButtons.h */,
 				8914A14218D4AD450009885E /* NSMutableArray+HEXUtilityButtons.m */,
+				8992943518E6312900DF9122 /* HEXCommonStrings.h */,
+				8992943618E6312900DF9122 /* HEXCommonStrings.m */,
 			);
 			name = Helpers;
 			path = Code/Helpers;
@@ -275,6 +292,7 @@
 		89AC03D9189DC32E00B71F89 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8992943818E6375B00DF9122 /* HEXAlertView */,
 				8914A13E18D4A4FE0009885E /* HEXSwipeableTableViewCell.h */,
 				8914A13F18D4A4FE0009885E /* HEXSwipeableTableViewCell.m */,
 			);
@@ -533,6 +551,7 @@
 				89B77451189EC0F80045CBC4 /* HEXSpotifyManager.m in Sources */,
 				8914A14318D4AD450009885E /* NSMutableArray+HEXUtilityButtons.m in Sources */,
 				89AC03E4189DC92D00B71F89 /* HEXProfileViewController.m in Sources */,
+				8992943718E6312900DF9122 /* HEXCommonStrings.m in Sources */,
 				89AC03F0189DD32300B71F89 /* HEXSlidingViewController.m in Sources */,
 				89B7746918A0C47F0045CBC4 /* HEXSongPlaybackViewController.m in Sources */,
 				89AC0404189E08BD00B71F89 /* HEXRoomsViewController.m in Sources */,
@@ -541,6 +560,7 @@
 				89B7746318A09D7C0045CBC4 /* HEXPlaylistDetailViewController.m in Sources */,
 				89B7746E18A131CA0045CBC4 /* HEXInboxViewController.m in Sources */,
 				89AC03EA189DCA9C00B71F89 /* HEXMenuViewController.m in Sources */,
+				8992943B18E6377B00DF9122 /* HEXAlertView.m in Sources */,
 				89AC03DA189DC32E00B71F89 /* HEXAppDelegate.m in Sources */,
 				89AC03F7189E05D200B71F89 /* HEXSearchViewController.m in Sources */,
 				8914A14018D4A4FE0009885E /* HEXSwipeableTableViewCell.m in Sources */,
